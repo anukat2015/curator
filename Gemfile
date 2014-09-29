@@ -28,3 +28,7 @@ gem 'spring',        group: :development
 
 gem 'yahoo-finance', require: 'yahoo_finance'
 gem 'clockwork'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
