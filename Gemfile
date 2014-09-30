@@ -30,7 +30,7 @@ gem 'yahoo-finance', require: 'yahoo_finance'
 gem 'clockwork'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.0.1'
   gem 'pry'
   gem 'pry-nav'
 end
