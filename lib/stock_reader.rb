@@ -1,5 +1,5 @@
 module StockReader
-  def adder(a,b)
+  def self.adder(a,b)
     a+b
   end
 end
