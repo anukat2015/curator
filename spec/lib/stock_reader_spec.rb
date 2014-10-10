@@ -15,6 +15,7 @@ RSpec.describe StockReader do
       test_file.rewind
       expected = ['FLWS', 'SRCE', 'FUBC', 'FOXA']
       expect(StockReader.extract_tickers(test_file)).to eq(expected)
+      File.delete("test_file.txt")
     end
   end
 
