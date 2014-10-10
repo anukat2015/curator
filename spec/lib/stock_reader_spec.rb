@@ -14,13 +14,4 @@ RSpec.describe StockReader do
     end
   end
 
-  describe 'get_yahoo_finance_data' do
-    it 'returns YahooFinance data' do
-      test_tickers = ['FLWS', 'SRCE', 'FUBC', 'FOXA']
-      actual = StockReader.get_yahoo_finance_data(test_tickers)[0].keys
-      expected = [:symbol, :name, :market_capitalization, :ebitda, :earnings_per_share, :book_value]
-      expect(actual).to eq(expected)
-    end
-  end
-
 end

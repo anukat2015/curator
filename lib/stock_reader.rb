@@ -3,9 +3,10 @@ module StockReader
     File.readlines(ticker_file).map { |line| line.match(/\s(\w+)$/).to_s.strip }
   end
 
-  def self.get_yahoo_finance_data(ticker_array)
-    params = [:name, :symbol, :market_capitalization, :ebitda, :earnings_per_share, :book_value]
-    data = YahooFinance.quotes(ticker_array, params)
-    data.map { |struct| struct.to_h }
+  def self.get_quandl_finance_data(ticker_array)
+
+  end
+
+  def self.calculate_greenblatt_score(hash_array)
   end
 end
