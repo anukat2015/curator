@@ -4,6 +4,8 @@ module StockReader
   end
 
   def self.get_quandl_finance_data(ticker_array)
+    Quandl::Client.use 'http://quandl.com/api/'
+    Quandl::Client.token = ENV['QUANDL_TOKEN']
 
   end
 

@@ -14,4 +14,11 @@ RSpec.describe StockReader do
     end
   end
 
+  describe 'get_quandl_finance_data' do
+    it 'returns Quandl data' do
+      test_tickers = ['FLWS', 'SRCE', 'FUBC', 'FOXA']
+
+    end
+  end
+
 end
