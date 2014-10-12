@@ -4,9 +4,7 @@ module StockReader
   end
 
   def self.get_quandl_finance_data(ticker_array)
-    Quandl::Client.use 'http://quandl.com/api/'
-    Quandl::Client.token = ENV['QUANDL_TOKEN']
-
+    r = HTTParty.get('https://www.quandl.com/api/v1/datasets/DMDRN/AAPL_EV.json?.trim_start=2014-1-01')
   end
 
   def self.calculate_greenblatt_score(hash_array)
