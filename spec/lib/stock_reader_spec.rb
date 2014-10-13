@@ -19,13 +19,17 @@ RSpec.describe StockReader do
       test_tickers = ['FLWS', 'SRCE', 'FOXA']
       actual = StockReader.get_earnings_yield(test_tickers)
       expected = [{company: "FLWS",
-                   enterprise_value: ["2013-06-27", 462.7165021151086],
-                   ebit: ["2013-06-27", 21.649862485391672],
+                   enterprise_value: 462.7165021151086,
+                   enterprise_value_date: "2013-06-27",
+                   ebit: 21.649862485391672,
+                   ebit_date: "2013-06-27",
                    earnings_yield: 0.046788611139712284
                    },
                    {company: "SRCE",
-                    enterprise_value: ["2012-12-31", 1051.297512924382],
-                    ebit: ["2012-12-31", -0.2380449344876999],
+                    enterprise_value: 1051.297512924382,
+                    enterprise_value_date: "2012-12-31",
+                    ebit: -0.2380449344876999,
+                    ebit_date: "2012-12-31",
                     earnings_yield: -0.00022642965626878833
                    }]
       expect(actual).to eq(expected)
