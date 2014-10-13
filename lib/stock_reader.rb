@@ -21,5 +21,6 @@ module StockReader
   end
 
   def self.sort_by_earnings_yield(company_data)
+    company_data.sort_by { |company| company[:earnings_yield] }.reverse
   end
 end
