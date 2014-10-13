@@ -20,6 +20,6 @@ module StockReader
     company_data
   end
 
-  def self.calculate_greenblatt_score(hash_array)
+  def self.sort_by_earnings_yield(company_data)
   end
 end

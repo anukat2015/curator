@@ -23,15 +23,44 @@ RSpec.describe StockReader do
                    enterprise_value_date: "2013-06-27",
                    ebit: 21.649862485391672,
                    ebit_date: "2013-06-27",
-                   earnings_yield: 0.046788611139712284
-                   },
-                   {company: "SRCE",
-                    enterprise_value: 1051.297512924382,
-                    enterprise_value_date: "2012-12-31",
-                    ebit: -0.2380449344876999,
-                    ebit_date: "2012-12-31",
-                    earnings_yield: -0.00022642965626878833
-                   }]
+                   earnings_yield: 0.046788611139712284},
+                  {company: "SRCE",
+                   enterprise_value: 1051.297512924382,
+                   enterprise_value_date: "2012-12-31",
+                   ebit: -0.2380449344876999,
+                   ebit_date: "2012-12-31",
+                   earnings_yield: -0.00022642965626878833}]
+      expect(actual).to eq(expected)
+    end
+  end
+
+  describe 'sort_by_earnings_yield' do
+    it 'sorts from highest to lowest' do
+      test_array = [{company: "SRCE",
+                     enterprise_value: 1051.297512924382,
+                     enterprise_value_date: "2012-12-31",
+                     ebit: -0.2380449344876999,
+                     ebit_date: "2012-12-31",
+                     earnings_yield: -0.00022642965626878833},
+                    {company: "FLWS",
+                     enterprise_value: 462.7165021151086,
+                     enterprise_value_date: "2013-06-27",
+                     ebit: 21.649862485391672,
+                     ebit_date: "2013-06-27",
+                     earnings_yield: 0.046788611139712284}]
+      actual = StockReader.sort_by_earnings_yield(test_array)
+      expected = [{company: "FLWS",
+                   enterprise_value: 462.7165021151086,
+                   enterprise_value_date: "2013-06-27",
+                   ebit: 21.649862485391672,
+                   ebit_date: "2013-06-27",
+                   earnings_yield: 0.046788611139712284},
+                  {company: "SRCE",
+                   enterprise_value: 1051.297512924382,
+                   enterprise_value_date: "2012-12-31",
+                   ebit: -0.2380449344876999,
+                   ebit_date: "2012-12-31",
+                   earnings_yield: -0.00022642965626878833}]
       expect(actual).to eq(expected)
     end
   end
