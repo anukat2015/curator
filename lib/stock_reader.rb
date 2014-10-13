@@ -3,8 +3,13 @@ module StockReader
     File.readlines(ticker_file).map { |line| line.match(/\s(\w+)$/).to_s.strip }
   end
 
-  def self.get_quandl_finance_data(ticker_array)
-    r = HTTParty.get('https://www.quandl.com/api/v1/datasets/DMDRN/AAPL_EV.json?.trim_start=2014-1-01')
+  def self.get_enterprise_value(ticker_array)
+    ev_data = []
+    ticker_array.each do |ticker|
+      response = HTTParty.get('https://www.quandl.com/api/v1/datasets/DMDRN/'+ticker+'_EV.json?rows=1&auth_token='+ENV['QUANDL_TOKEN'])
+      ev_data << { response["code"] => response["data"].flatten }
+    end
+    ev_data
   end
 
   def self.calculate_greenblatt_score(hash_array)

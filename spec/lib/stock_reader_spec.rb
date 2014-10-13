@@ -16,7 +16,10 @@ RSpec.describe StockReader do
 
   describe 'get_quandl_finance_data' do
     it 'returns Quandl data' do
-      test_tickers = ['FLWS', 'SRCE', 'FUBC', 'FOXA']
+      test_ticker = ['FLWS']
+      actual = StockReader.get_enterprise_value(test_ticker)
+      expected = [{"FLWS_EV" => ["2013-06-27", 462.7165021151086]}]
+      expect(actual).to eq(expected)
     end
   end
 
