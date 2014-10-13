@@ -48,7 +48,7 @@ RSpec.describe StockReader do
                      ebit: 21.649862485391672,
                      ebit_date: "2013-06-27",
                      earnings_yield: 0.046788611139712284}]
-      actual = StockReader.sort_by_earnings_yield(test_array)
+      actual = StockReader.sort_by_earnings_yield(test_array, 30)
       expected = [{company: "FLWS",
                    enterprise_value: 462.7165021151086,
                    enterprise_value_date: "2013-06-27",
