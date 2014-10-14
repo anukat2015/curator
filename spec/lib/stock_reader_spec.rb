@@ -18,7 +18,7 @@ RSpec.describe StockReader do
     it 'returns accurate data' do
       test_tickers = ['FLWS', 'SRCE', 'FOXA']
       actual = StockReader.get_earnings_yield(test_tickers)
-      expected = [{symbol: "FLWS",
+      $company_data = [{symbol: "FLWS",
                    enterprise_value: 462.7165021151086,
                    enterprise_value_date: "2013-06-27",
                    ebit: 21.649862485391672,
@@ -30,38 +30,14 @@ RSpec.describe StockReader do
                    ebit: -0.2380449344876999,
                    ebit_date: "2012-12-31",
                    earnings_yield: -0.00022642965626878833}]
-      expect(actual).to eq(expected)
+      expect(actual).to eq($company_data)
     end
   end
 
   describe 'sort_by_earnings_yield' do
     it 'sorts from highest to lowest' do
-      test_array = [{symbol: "SRCE",
-                     enterprise_value: 1051.297512924382,
-                     enterprise_value_date: "2012-12-31",
-                     ebit: -0.2380449344876999,
-                     ebit_date: "2012-12-31",
-                     earnings_yield: -0.00022642965626878833},
-                    {symbol: "FLWS",
-                     enterprise_value: 462.7165021151086,
-                     enterprise_value_date: "2013-06-27",
-                     ebit: 21.649862485391672,
-                     ebit_date: "2013-06-27",
-                     earnings_yield: 0.046788611139712284}]
-      actual = StockReader.sort_by_earnings_yield(test_array, 30)
-      expected = [{symbol: "FLWS",
-                   enterprise_value: 462.7165021151086,
-                   enterprise_value_date: "2013-06-27",
-                   ebit: 21.649862485391672,
-                   ebit_date: "2013-06-27",
-                   earnings_yield: 0.046788611139712284},
-                  {symbol: "SRCE",
-                   enterprise_value: 1051.297512924382,
-                   enterprise_value_date: "2012-12-31",
-                   ebit: -0.2380449344876999,
-                   ebit_date: "2012-12-31",
-                   earnings_yield: -0.00022642965626878833}]
-      expect(actual).to eq(expected)
+      actual = StockReader.sort_by_earnings_yield($company_data.reverse, 30)
+      expect(actual).to eq($company_data)
     end
   end
 
@@ -70,20 +46,14 @@ RSpec.describe StockReader do
       CompanyReport.delete_all
     end
     it 'creates reports' do
-      test_company_array = [{symbol: "SRCE",
-                              enterprise_value: 1051.297512924382,
-                              enterprise_value_date: "2012-12-31",
-                              ebit: -0.2380449344876999,
-                              ebit_date: "2012-12-31",
-                              earnings_yield: -0.00022642965626878833},
-                             {symbol: "FLWS",
-                              enterprise_value: 462.7165021151086,
-                              enterprise_value_date: "2013-06-27",
-                              ebit: 21.649862485391672,
-                              ebit_date: "2013-06-27",
-                              earnings_yield: 0.046788611139712284}]
-      StockReader.create_company_reports(test_company_array)
+      StockReader.create_company_reports($company_data)
       expect(CompanyReport.count).to eq(2)
+    end
+  end
+
+  describe 'create_csv_file' do
+    it 'creates correct CSV files' do
+
     end
   end
 
