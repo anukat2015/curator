@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930000012) do
+ActiveRecord::Schema.define(version: 20141014021124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,7 @@ ActiveRecord::Schema.define(version: 20140930000012) do
   create_table "company_reports", force: true do |t|
     t.string   "name"
     t.string   "symbol"
-    t.string   "ebitda"
     t.string   "market_cap"
-    t.string   "eps"
-    t.string   "book_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
