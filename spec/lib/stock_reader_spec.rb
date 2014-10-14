@@ -65,4 +65,23 @@ RSpec.describe StockReader do
     end
   end
 
+  describe 'create_company_reports' do
+    it 'creates reports' do
+      test_company_array = [{company: "SRCE",
+                              enterprise_value: 1051.297512924382,
+                              enterprise_value_date: "2012-12-31",
+                              ebit: -0.2380449344876999,
+                              ebit_date: "2012-12-31",
+                              earnings_yield: -0.00022642965626878833},
+                             {company: "FLWS",
+                              enterprise_value: 462.7165021151086,
+                              enterprise_value_date: "2013-06-27",
+                              ebit: 21.649862485391672,
+                              ebit_date: "2013-06-27",
+                              earnings_yield: 0.046788611139712284}]
+      StockReader.create_company_reports(test_company_array)
+      expect(CompanyReport.count).to eq(2)
+    end
+  end
+
 end

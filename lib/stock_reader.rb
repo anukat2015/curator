@@ -23,4 +23,10 @@ module StockReader
   def self.sort_by_earnings_yield(company_data, num_to_keep)
     company_data.sort_by { |company| company[:earnings_yield] }.reverse.take(num_to_keep)
   end
+
+  def self.create_company_reports(company_data_array)
+    company_data_array.each do |company|
+      CompanyReport.create(symbol: company[:company], enterprise_value: company[:enterprise_value], enterprise_value_date: company[:enterprise_value_date], ebit: company[:ebit], ebit_date: company[:ebit_date], earnings_yield: company[:earnings_yield])
+    end
+  end
 end
