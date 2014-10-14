@@ -51,8 +51,8 @@ RSpec.describe StockReader do
     end
   end
 
-  describe 'create_csv_file' do
-    it 'creates correct CSV files' do
+  describe 'create_xls_file' do
+    it 'creates correct xls files' do
 
     end
   end

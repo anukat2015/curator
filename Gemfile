@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 gem 'httparty'
 gem 'clockwork'
 gem 'axlsx'
+gem 'mail'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
