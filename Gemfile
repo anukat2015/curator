@@ -29,7 +29,6 @@ gem 'httparty'
 gem 'clockwork'
 gem 'axlsx'
 gem 'mail'
-gem 'mailcatcher'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
