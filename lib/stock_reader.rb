@@ -9,7 +9,7 @@ module StockReader
       ev_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/DMDRN/#{ticker}_EV.json?rows=1&auth_token=#{ENV['QUANDL_TOKEN']}")
       ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/DMDRN/#{ticker}_EBIT_1T.json?rows=1&auth_token=#{ENV['QUANDL_TOKEN']}")
       if ev_response["code"] && ebit_response["code"]
-        company_data << { company: ticker,
+        company_data << { symbol: ticker,
                           enterprise_value: ev_response["data"].flatten[1],
                           enterprise_value_date: ev_response["data"].flatten[0],
                           ebit: ebit_response["data"].flatten[1],
@@ -28,5 +28,9 @@ module StockReader
     company_data_array.each do |company|
       CompanyReport.create(symbol: company[:company], enterprise_value: company[:enterprise_value], enterprise_value_date: company[:enterprise_value_date], ebit: company[:ebit], ebit_date: company[:ebit_date], earnings_yield: company[:earnings_yield])
     end
+  end
+
+  def self.create_csv_file(company_data_array)
+
   end
 end
