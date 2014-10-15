@@ -31,6 +31,17 @@ module StockReader
   end
 
   def self.create_xls_file(company_data_array)
-
+    p = Axlsx::Package.new
+    wb = p.workbook
+    if company_data_array
+      wb.add_worksheet(:name => "Company Report") do |sheet|
+        sheet.add_row ["Symbol", "Enterprise Value", "Enterprise Value Date", "EBIT", "EBIT Date", "Earnings Yield"]
+        company_data_array.each do |data|
+          data_array = data.each_value.map { |val| val.to_s }
+          sheet.add_row data_array
+        end
+      end
+    end
   end
+
 end
