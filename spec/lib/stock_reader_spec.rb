@@ -3,7 +3,7 @@ require 'stock_reader'
 
 RSpec.describe StockReader do
 
-  describe 'extract_tickers' do
+  describe '#extract_tickers' do
     it 'returns a correct array of ticker symbols' do
       test_file = File.open("test_file.txt", "w")
       File.readlines("russell3000.txt").take(4).each { |line| test_file.write(line) }
@@ -14,7 +14,7 @@ RSpec.describe StockReader do
     end
   end
 
-  describe 'get_earnings_yield' do
+  describe '#get_earnings_yield' do
     it 'returns accurate data' do
       test_tickers = ['FLWS', 'SRCE', 'FOXA']
       actual = StockReader.get_earnings_yield(test_tickers)
@@ -34,14 +34,14 @@ RSpec.describe StockReader do
     end
   end
 
-  describe 'sort_by_earnings_yield' do
+  describe '#sort_by_earnings_yield' do
     it 'sorts from highest to lowest' do
       actual = StockReader.sort_by_earnings_yield($company_data.reverse, 30)
       expect(actual).to eq($company_data)
     end
   end
 
-  describe 'create_company_reports' do
+  describe '#create_company_reports' do
     before(:each) do
       CompanyReport.delete_all
     end
@@ -51,9 +51,9 @@ RSpec.describe StockReader do
     end
   end
 
-  describe 'create_xls_file' do
-    it 'creates correct xls files' do
-
+  describe '#create_xls_file' do
+    it 'creates xls files' do
+      expect(StockReader.create_xls_file($company_data).class.to_s).to eq('Axlsx::Workbook')
     end
   end
 
