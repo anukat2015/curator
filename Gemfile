@@ -35,3 +35,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
