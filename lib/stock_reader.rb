@@ -30,7 +30,7 @@ module StockReader
     end
   end
 
-  def self.create_csv_file(company_data_array)
+  def self.create_xls_file(company_data_array)
 
   end
 end
