@@ -44,4 +44,13 @@ module StockReader
     end
   end
 
+  def self.create_csv(company_data_array)
+    CSV.open("company_report.csv", "wb") do |csv|
+      csv << ["Symbol", "Enterprise Value", "Enterprise Value Date", "EBIT", "EBIT Date", "Earnings Yield"]
+      company_data_array.each do |data|
+        csv << data.each_value.map { |val| val.to_s }
+      end
+    end
+  end
+
 end

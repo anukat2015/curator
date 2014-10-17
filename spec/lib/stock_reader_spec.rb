@@ -57,4 +57,9 @@ RSpec.describe StockReader do
     end
   end
 
+  describe '#create_csv' do
+    it 'creates csv files' do
+      expect(StockReader.create_csv($company_data).class.to_s).to eq('CSV')
+    end
+  end
 end
