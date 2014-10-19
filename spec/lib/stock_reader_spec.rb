@@ -51,11 +51,11 @@ RSpec.describe StockReader do
     end
   end
 
-  describe '#create_xls_file' do
-    it 'creates xls files' do
-      expect(StockReader.create_xls_file($company_data).class.to_s).to eq('Axlsx::Worksheet')
-    end
-  end
+  # describe '#create_xls_file' do
+  #   it 'creates xls files' do
+  #     expect(StockReader.create_xls_file($company_data).class.to_s).to eq('Axlsx::Worksheet')
+  #   end
+  # end
 
   describe '#create_csv' do
     it 'creates csv files' do
