@@ -1,6 +1,6 @@
 class CompanyReportMailer < ActionMailer::Base
   default from: "c@leveen.co"
 
-  def xls_email()
+  def csv_email()
   end
 end
