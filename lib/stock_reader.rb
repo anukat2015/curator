@@ -1,4 +1,5 @@
 require 'csv'
+require 'httparty'
 
 module StockReader
   def self.extract_tickers(ticker_file)
