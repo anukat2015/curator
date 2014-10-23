@@ -7,8 +7,10 @@ module StockReader
   end
 
   def self.get_earnings_yield(ticker_array)
+    i = 0
     company_data = []
     ticker_array.each do |ticker|
+      i += 1
       ev_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/DMDRN/#{ticker}_EV.json?rows=1&auth_token=#{ENV['QUANDL_TOKEN']}")
       ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/DMDRN/#{ticker}_EBIT_1T.json?rows=1&auth_token=#{ENV['QUANDL_TOKEN']}")
       if ev_response["code"] && ebit_response["code"]
@@ -18,18 +20,19 @@ module StockReader
                           ebit: ebit_response["data"].flatten[1],
                           ebit_date: ebit_response["data"].flatten[0],
                           earnings_yield: ebit_response["data"].flatten[1] / ev_response["data"].flatten[1] }
+      puts "Done with #{i}"
       end
     end
     company_data
   end
 
   def self.sort_by_earnings_yield(company_data, num_to_keep)
-    company_data.sort_by { |company| company[:earnings_yield] }.reverse.take(num_to_keep)
+    company_data.sort_by { |company| company[:earnings_yield].to_f }.reverse.take(num_to_keep)
   end
 
   def self.create_company_reports(company_data_array)
     company_data_array.each do |company|
-      CompanyReport.create(symbol: company[:company], enterprise_value: company[:enterprise_value], enterprise_value_date: company[:enterprise_value_date], ebit: company[:ebit], ebit_date: company[:ebit_date], earnings_yield: company[:earnings_yield])
+      CompanyReport.create(symbol: company[:symbol], enterprise_value: company[:enterprise_value].to_s, enterprise_value_date: company[:enterprise_value_date], ebit: company[:ebit].to_s, ebit_date: company[:ebit_date], earnings_yield: company[:earnings_yield].to_s)
     end
   end
 
