@@ -23,7 +23,7 @@ module StockReader
       puts "Done with #{i}"
       end
     end
-    company_data
+    company_data.reject { |company| company[:earnings_yield].nan? }
   end
 
   def self.sort_by_earnings_yield(company_data, num_to_keep)
