@@ -7,10 +7,8 @@ module StockReader
   end
 
   def self.get_earnings_yield(ticker_array)
-    i = 0
     company_data = []
     ticker_array.each do |ticker|
-      i += 1
       ev_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/DMDRN/#{ticker}_EV.json?rows=1&auth_token=#{ENV['QUANDL_TOKEN']}")
       ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/DMDRN/#{ticker}_EBIT_1T.json?rows=1&auth_token=#{ENV['QUANDL_TOKEN']}")
       if ev_response["code"] && ebit_response["code"]
@@ -20,7 +18,6 @@ module StockReader
                           ebit: ebit_response["data"].flatten[1],
                           ebit_date: ebit_response["data"].flatten[0],
                           earnings_yield: ebit_response["data"].flatten[1] / ev_response["data"].flatten[1] }
-      puts "Done with #{i}"
       end
     end
     company_data.reject { |company| company[:earnings_yield].nan? }
