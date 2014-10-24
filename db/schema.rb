@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024200809) do
+ActiveRecord::Schema.define(version: 20141024201156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20141024200809) do
     t.string   "fixed_assets"
     t.string   "working_capital"
     t.string   "return_on_capital"
+    t.string   "market_cap_date"
+    t.string   "total_assets"
+    t.string   "total_assets_date"
+    t.string   "current_assets"
+    t.string   "current_assets_date"
+    t.string   "total_debt"
+    t.string   "total_debt_date"
+    t.string   "cash_and_equivalents"
+    t.string   "cash_and_equivalents_date"
+    t.string   "working_capital_date"
   end
 
 end
