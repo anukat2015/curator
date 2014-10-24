@@ -16,20 +16,20 @@ RSpec.describe StockReader do
 
   describe '#get_earnings_yield' do
     it 'returns accurate data' do
-      test_tickers = ['FLWS', 'SRCE', 'FOXA']
-      actual = StockReader.get_earnings_yield(test_tickers)
-      $company_data = [{symbol: "FLWS",
-                   enterprise_value: 462.7165021151086,
-                   enterprise_value_date: "2013-06-27",
-                   ebit: 21.649862485391672,
-                   ebit_date: "2013-06-27",
-                   earnings_yield: 0.046788611139712284},
-                  {symbol: "SRCE",
-                   enterprise_value: 1051.297512924382,
-                   enterprise_value_date: "2012-12-31",
-                   ebit: -0.2380449344876999,
-                   ebit_date: "2012-12-31",
-                   earnings_yield: -0.00022642965626878833}]
+      test_ticker = 'AAPL'
+      actual = StockReader.get_earnings_yield(test_ticker)
+      $company_data =  {symbol: "AAPL",
+                        total_debt: 31040000000.0,
+                        total_debt_date: "2014-06-28",
+                        market_cap: 581960793730.0,
+                        market_cap_date: "2014-07-23",
+                        cash_and_equivalents: 12977000000.0,
+                        cash_and_equivalents_date: "2014-06-28",
+                        ebit: 10484000000.0,
+                        ebit_date: "2014-06-28",
+                        enterprise_value: 600023793730.0,
+                        earnings_yield: 0.017472640434518523}
+
       expect(actual).to eq($company_data)
     end
   end
