@@ -6,21 +6,14 @@ module StockReader
     File.readlines(ticker_file).map { |line| line.match(/\s(\w+)$/).to_s.strip }
   end
 
-  def self.get_earnings_yield(ticker_array)
-    company_data = []
-    ticker_array.each do |ticker|
-      ev_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/DMDRN/#{ticker}_EV.json?rows=1&auth_token=#{ENV['QUANDL_TOKEN']}")
-      ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/DMDRN/#{ticker}_EBIT_1T.json?rows=1&auth_token=#{ENV['QUANDL_TOKEN']}")
-      if ev_response["code"] && ebit_response["code"]
-        company_data << { symbol: ticker,
-                          enterprise_value: ev_response["data"].flatten[1],
-                          enterprise_value_date: ev_response["data"].flatten[0],
-                          ebit: ebit_response["data"].flatten[1],
-                          ebit_date: ebit_response["data"].flatten[0],
-                          earnings_yield: ebit_response["data"].flatten[1] / ev_response["data"].flatten[1] }
-      end
-    end
-    company_data.reject { |company| company[:earnings_yield].nan? }
+  def self.get_earnings_yield(ticker)
+    # company_data.reject { |company| company[:earnings_yield].nan? }
+  end
+
+  def self.get_return_on_capital(ticker)
+  end
+
+  def self.combine_data(ticker_array)
   end
 
   def self.sort_by_earnings_yield(company_data, num_to_keep)

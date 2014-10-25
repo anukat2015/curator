@@ -49,7 +49,14 @@ RSpec.describe StockReader do
     end
   end
 
-  describe '#'
+  describe '#combine_data' do
+    it 'returns an array of combined hashes' do
+      ticker_array = ['AAPL']
+      actual = StockReader.combine_data(ticker_array)
+      expected = [$return_on_capital_data.merge($earnings_yield_data)]
+      expect(actual).to eq(expected)
+    end
+  end
 
   describe '#sort_by_earnings_yield' do
     it 'sorts from highest to lowest' do
