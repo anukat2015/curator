@@ -29,6 +29,8 @@ module StockReader
        ebit_date: ebit_response["data"].flatten[0],
        enterprise_value: ev,
        earnings_yield: ey}
+    else
+      p "#{ticker} earnings yield retrieval failed."
     end
   end
 
@@ -38,6 +40,22 @@ module StockReader
     current_assets_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETSC_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     working_capital_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     if ebit_response["data"] && total_assets_response["data"] && current_assets_response["data"] && working_capital_response["data"]
+      ebit = ebit_response["data"].flatten[1]
+      total_assets = total_assets_response["data"].flatten[1]
+      current_assets = current_assets_response["data"].flatten[1]
+      working_capital = working_capital_response["data"].flatten[1]
+      net_fixed_assets = total_assets - current_assets
+      return_on_capital = ebit / (net_fixed_assets + working_capital)
+      {symbol: ticker,
+       total_assets: total_assets,
+       total_assets_date: total_assets_response["data"].flatten[0],
+       current_assets: current_assets,
+       current_assets_date: current_assets_response["data"].flatten[0],
+       working_capital: working_capital,
+       working_capital_date: working_capital_response["data"].flatten[0],
+       return_on_capital: return_on_capital}
+     else
+      p "#{ticker} return on capital retrieval failed."
     end
   end
 
