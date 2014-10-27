@@ -7,13 +7,42 @@ module StockReader
   end
 
   def self.get_earnings_yield(ticker)
-    # company_data.reject { |company| company[:earnings_yield].nan? }
+    ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    market_cap_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_MARKETCAP.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    cash_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_CASHNEQ_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    debt_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_DEBT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    if ebit_response["data"] && market_cap_response["data"] && cash_response["data"] && debt_response["data"]
+      ebit = ebit_response["data"].flatten[1]
+      market_cap = market_cap_response["data"].flatten[1]
+      debt = debt_response["data"].flatten[1]
+      cash = cash_response["data"].flatten[1]
+      ev = (market_cap + debt) - cash
+      ey = ebit / ev
+      {symbol: ticker,
+       total_debt: debt,
+       total_debt_date: debt_response["data"].flatten[0],
+       market_cap: market_cap,
+       market_cap_date: market_cap_response["data"].flatten[0],
+       cash_and_equivalents: cash,
+       cash_and_equivalents_date: cash_response["data"].flatten[0],
+       ebit: ebit,
+       ebit_date: ebit_response["data"].flatten[0],
+       enterprise_value: ev,
+       earnings_yield: ey}
+    end
   end
 
   def self.get_return_on_capital(ticker)
+    ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    total_assets_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETS_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    current_assets_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETSC_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    working_capital_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    if ebit_response["data"] && total_assets_response["data"] && current_assets_response["data"] && working_capital_response["data"]
+    end
   end
 
   def self.combine_data(ticker_array)
+    #company_data.reject { |company| company[:earnings_yield].nan? }
   end
 
   def self.sort_by_earnings_yield(company_data, num_to_keep)
