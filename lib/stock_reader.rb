@@ -1,5 +1,6 @@
 require 'csv'
 require 'httparty'
+require 'pry'
 
 module StockReader
   def self.extract_tickers(ticker_file)
@@ -31,6 +32,7 @@ module StockReader
        earnings_yield: ey}
     else
       p "#{ticker} earnings yield retrieval failed."
+      binding.pry
     end
   end
 
@@ -56,11 +58,16 @@ module StockReader
        return_on_capital: return_on_capital}
      else
       p "#{ticker} return on capital retrieval failed."
+      binding.pry
     end
   end
 
   def self.combine_data(ticker_array)
-    #company_data.reject { |company| company[:earnings_yield].nan? }
+    company_data = []
+    ticker_array.each do |ticker|
+      company_data << get_earnings_yield(ticker).merge(get_return_on_capital(ticker))
+    end
+    company_data.reject { |company| company[:earnings_yield].nan? }
   end
 
   def self.sort_by_earnings_yield(company_data, num_to_keep)
