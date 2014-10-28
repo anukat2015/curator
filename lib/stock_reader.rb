@@ -1,6 +1,5 @@
 require 'csv'
 require 'httparty'
-require 'pry'
 
 module StockReader
   def self.extract_tickers(ticker_file)
@@ -32,7 +31,6 @@ module StockReader
        earnings_yield: ey}
     else
       p "#{ticker} earnings yield retrieval failed."
-      binding.pry
     end
   end
 
@@ -58,7 +56,6 @@ module StockReader
        return_on_capital: return_on_capital}
      else
       p "#{ticker} return on capital retrieval failed."
-      binding.pry
     end
   end
 
