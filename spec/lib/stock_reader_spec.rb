@@ -60,8 +60,28 @@ RSpec.describe StockReader do
 
   describe '#sort_by_earnings_yield' do
     it 'sorts from highest to lowest' do
-      actual = StockReader.sort_by_earnings_yield($company_data.reverse, 30)
-      expect(actual).to eq($company_data)
+      test_earnings_data = {
+                       :symbol => "SRCE",
+                   :total_debt => 468492000.0,
+              :total_debt_date => "2014-06-30",
+                   :market_cap => 689213538.87,
+              :market_cap_date => "2014-07-24",
+         :cash_and_equivalents => 117378000.0,
+    :cash_and_equivalents_date => "2014-06-30",
+                         :ebit => 24110000.0,
+                    :ebit_date => "2014-06-30",
+             :enterprise_value => 1040327538.8699999,
+               :earnings_yield => 0.023175393420987584}
+
+      $company_data = [$earnings_yield_data, test_earnings_data]
+      actual = StockReader.sort_by_earnings_yield($company_data, 30)
+      expect(actual).to eq($company_data.reverse)
+    end
+  end
+
+  describe '#sort_by_return_on_capital' do
+    it 'sorts from highest to lowest' do
+      actual = StockReader.sort_by_return_on_capital()
     end
   end
 

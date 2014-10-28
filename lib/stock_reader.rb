@@ -67,10 +67,11 @@ module StockReader
     ticker_array.each do |ticker|
       company_data << get_earnings_yield(ticker).merge(get_return_on_capital(ticker))
     end
-    company_data.reject { |company| company[:earnings_yield].nan? }
+    company_data
   end
 
   def self.sort_by_earnings_yield(company_data, num_to_keep)
+    company_data.reject! { |company| company[:earnings_yield].nan? }
     company_data.sort_by { |company| company[:earnings_yield].to_f }.reverse.take(num_to_keep)
   end
 
