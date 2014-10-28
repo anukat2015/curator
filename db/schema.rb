@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028031444) do
+ActiveRecord::Schema.define(version: 20141028061359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "company_report_by_return_on_capitals", force: true do |t|
+    t.string   "name"
+    t.string   "symbol"
+    t.string   "ebit"
+    t.string   "ebit_date"
+    t.string   "market_cap"
+    t.string   "market_cap_date"
+    t.string   "working_capital"
+    t.string   "working_capital_date"
+    t.string   "total_assets"
+    t.string   "total_assets_date"
+    t.string   "current_assets"
+    t.string   "current_assets_date"
+    t.string   "total_debt"
+    t.string   "total_debt_date"
+    t.string   "cash_and_equivalents"
+    t.string   "cash_and_equivalents_date"
+    t.string   "fixed_assets"
+    t.string   "enterprise_value"
+    t.string   "earnings_yield"
+    t.string   "return_on_capital"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "company_reports_by_earnings_yield", force: true do |t|
     t.string   "name"
