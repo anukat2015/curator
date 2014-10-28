@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024201156) do
+ActiveRecord::Schema.define(version: 20141028031444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "company_reports", force: true do |t|
+  create_table "company_reports_by_earnings_yield", force: true do |t|
     t.string   "name"
     t.string   "symbol"
     t.string   "market_cap"
