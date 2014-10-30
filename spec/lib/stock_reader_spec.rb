@@ -97,12 +97,13 @@ RSpec.describe StockReader do
     end
   end
 
-  describe '#create_company_reports_by_roc' do
+  describe '#create_company_reports' do
     before(:each) do
+      CompanyReportByEarningsYield.delete_all
       CompanyReportByReturnOnCapital.delete_all
     end
     it 'creates reports' do
-      StockReader.create_company_reports_by_roc($return_on_capital_array)
+      StockReader.create_company_reports($return_on_capital_array, CompanyReportByReturnOnCapital)
       expect(CompanyReportByReturnOnCapital.count).to eq(2)
     end
   end

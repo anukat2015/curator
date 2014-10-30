@@ -77,9 +77,9 @@ module StockReader
     company_data.sort_by { |company| company[:return_on_capital].to_f }.reverse.take(num_to_keep)
   end
 
-  def self.create_company_reports_by_roc(company_data_array)
+  def self.create_company_reports(company_data_array, company_report)
     company_data_array.each do |company|
-      CompanyReportByReturnOnCapital.create(
+      company_report.create(
                       symbol: company[:symbol],
                         ebit: company[:ebit].to_s,
                    ebit_date: company[:ebit_date],
