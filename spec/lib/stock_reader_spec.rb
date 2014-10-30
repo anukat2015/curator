@@ -49,10 +49,10 @@ RSpec.describe StockReader do
     end
   end
 
-  describe '#combine_data' do
+  describe '#retrieve_data' do
     it 'returns an array of combined hashes' do
       ticker_array = ['AAPL']
-      actual = StockReader.combine_data(ticker_array)
+      actual = StockReader.retrieve_data(ticker_array)
       expected = [$return_on_capital_data.merge($earnings_yield_data)]
       expect(actual).to eq(expected)
     end
@@ -73,9 +73,9 @@ RSpec.describe StockReader do
              :enterprise_value => 1040327538.8699999,
                :earnings_yield => 0.023175393420987584}
 
-      $earnings_yield_array = [$earnings_yield_data, test_earnings_data]
-      actual = StockReader.sort_by_earnings_yield($earnings_yield_array, 30)
-      expect(actual).to eq($earnings_yield_array.reverse)
+      earnings_yield_array = [$earnings_yield_data, test_earnings_data]
+      actual = StockReader.sort_by_earnings_yield(earnings_yield_array, 30)
+      expect(actual).to eq(earnings_yield_array.reverse)
     end
   end
 

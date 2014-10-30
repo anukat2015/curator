@@ -1,6 +1,5 @@
 require 'csv'
 require 'httparty'
-require 'pry'
 
 module StockReader
   def self.extract_tickers(ticker_file)
@@ -31,7 +30,7 @@ module StockReader
                enterprise_value: ev,
                  earnings_yield: ey}
     else
-      p "#{ticker} earnings yield retrieval failed."
+      puts "#{ticker} earnings yield retrieval failed."
     end
   end
 
@@ -56,11 +55,11 @@ module StockReader
       working_capital_date: working_capital_response["data"].flatten[0],
          return_on_capital: return_on_capital}
      else
-      p "#{ticker} return on capital retrieval failed."
+      puts "#{ticker} return on capital retrieval failed."
     end
   end
 
-  def self.combine_data(ticker_array)
+  def self.retrieve_data(ticker_array)
     company_data = []
     ticker_array.each do |ticker|
       company_data << get_earnings_yield(ticker).merge(get_return_on_capital(ticker))
