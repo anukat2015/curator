@@ -1,6 +1,6 @@
-class CreateCompanyReportByReturnOnCapitals < ActiveRecord::Migration
+class CreateCompanyReportsByReturnOnCapital < ActiveRecord::Migration
   def change
-    create_table :company_report_by_return_on_capitals do |t|
+    create_table :company_reports_by_return_on_capital do |t|
       t.string :name
       t.string :symbol
       t.string :ebit

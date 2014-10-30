@@ -79,7 +79,26 @@ module StockReader
 
   def self.create_company_reports_by_roc(company_data_array)
     company_data_array.each do |company|
-      CompanyReportByReturnOnCapital.create(symbol: company[:symbol], enterprise_value: company[:enterprise_value].to_s, enterprise_value_date: company[:enterprise_value_date], ebit: company[:ebit].to_s, ebit_date: company[:ebit_date], earnings_yield: company[:earnings_yield].to_s)
+      CompanyReportByReturnOnCapital.create(
+                      symbol: company[:symbol],
+                        ebit: company[:ebit].to_s,
+                   ebit_date: company[:ebit_date],
+                  market_cap: company[:market_cap].to_s,
+             market_cap_date: company[:market_cap_date],
+             working_capital: company[:working_capital].to_s,
+        working_capital_date: company[:working_capital_date],
+                total_assets: company[:total_assets].to_s,
+           total_assets_date: company[:total_assets_date],
+              current_assets: company[:current_assets].to_s,
+         current_assets_date: company[:current_assets_date],
+                  total_debt: company[:total_debt].to_s,
+             total_debt_date: company[:total_debt_date],
+        cash_and_equivalents: company[:cash_and_equivalents].to_s,
+   cash_and_equivalents_date: company[:cash_and_equivalents_date],
+                fixed_assets: company[:fixed_assets],
+            enterprise_value: company[:enterprise_value],
+              earnings_yield: company[:earnings_yield],
+              return_on_capital: company[:return_on_capital])
     end
   end
 
