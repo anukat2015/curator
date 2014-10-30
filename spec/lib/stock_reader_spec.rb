@@ -109,7 +109,7 @@ RSpec.describe StockReader do
 
   describe '#create_csv' do
     it 'creates csv files' do
-      StockReader.create_csv($company_data)
+      StockReader.create_csv($return_on_capital_array)
       expect(File.file?("company_report.csv")).to be(true)
     end
     after(:all) do
