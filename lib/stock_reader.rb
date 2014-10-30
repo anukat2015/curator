@@ -62,8 +62,10 @@ module StockReader
   def self.retrieve_data(ticker_array)
     company_array = []
     ticker_array.each do |ticker|
-      if get_earnings_yield(ticker) && get_return_on_capital(ticker)
-        company_array << get_earnings_yield(ticker).merge(get_return_on_capital(ticker))
+      ey  = get_earnings_yield(ticker)
+      roc = get_return_on_capital(ticker)
+      if ey && roc
+        company_array << ey.merge(roc)
       end
     end
     company_array

@@ -1,4 +1,5 @@
 require 'date'
+require 'benchmark'
 require_relative 'stock_reader'
 
 def curate(num_to_keep)
@@ -13,7 +14,7 @@ def curate(num_to_keep)
   StockReader.create_csv(data_by_roc, "Return on Capital #{Date.today}")
 end
 
-curate(10)
+puts Benchmark.measure { curate(20) }
 
 
 
