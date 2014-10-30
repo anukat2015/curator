@@ -11,7 +11,7 @@ module StockReader
     market_cap_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_MARKETCAP.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     cash_response       = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_CASHNEQ_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     debt_response       = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_DEBT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-    unless ebit_response["data"].empty? || market_cap_response["data"].empty? || cash_response["data"].empty? || debt_response["data"].empty?
+    if [ebit_response["data"], market_cap_response["data"], cash_response["data"], debt_response["data"]].none? { |data| data.to_a.empty? }
       ebit       = ebit_response["data"].flatten[1]
       market_cap = market_cap_response["data"].flatten[1]
       debt       = debt_response["data"].flatten[1]
@@ -30,7 +30,7 @@ module StockReader
                enterprise_value: ev,
                  earnings_yield: ey}
     else
-      puts "#{ticker} earnings yield retrieval failed."
+      nil
     end
   end
 
@@ -39,7 +39,7 @@ module StockReader
     total_assets_response    = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETS_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     current_assets_response  = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETSC_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     working_capital_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-    unless ebit_response["data"].empty? || total_assets_response["data"].empty? || current_assets_response["data"].empty? || working_capital_response["data"].empty?
+    if [ebit_response["data"], total_assets_response["data"], current_assets_response["data"], working_capital_response["data"]].none? { |data| data.to_a.empty? }
       ebit              = ebit_response["data"].flatten[1]
       total_assets      = total_assets_response["data"].flatten[1]
       current_assets    = current_assets_response["data"].flatten[1]
@@ -54,26 +54,28 @@ module StockReader
            working_capital: working_capital,
       working_capital_date: working_capital_response["data"].flatten[0],
          return_on_capital: return_on_capital}
-     else
-      puts "#{ticker} return on capital retrieval failed."
+    else
+      nil
     end
   end
 
   def self.retrieve_data(ticker_array)
-    company_data = []
+    company_array = []
     ticker_array.each do |ticker|
-      company_data << get_earnings_yield(ticker).merge(get_return_on_capital(ticker))
+      if get_earnings_yield(ticker) && get_return_on_capital(ticker)
+        company_array << get_earnings_yield(ticker).merge(get_return_on_capital(ticker))
+      end
     end
-    company_data
+    company_array
   end
 
   def self.sort_by_earnings_yield(company_data, num_to_keep)
-    company_data.reject! { |company| company[:earnings_yield].nan? }
+    company_data.reject! { |company| company[:earnings_yield].nil? || company[:earnings_yield].nan? }
     company_data.sort_by { |company| company[:earnings_yield].to_f }.reverse.take(num_to_keep)
   end
 
   def self.sort_by_return_on_capital(company_data, num_to_keep)
-    company_data.reject! { |company| company[:return_on_capital].nan? }
+    company_data.reject! { |company| company[:return_on_capital].nil? || company[:return_on_capital].nan? }
     company_data.sort_by { |company| company[:return_on_capital].to_f }.reverse.take(num_to_keep)
   end
 
