@@ -98,7 +98,7 @@ module StockReader
                 fixed_assets: company[:fixed_assets],
             enterprise_value: company[:enterprise_value],
               earnings_yield: company[:earnings_yield],
-              return_on_capital: company[:return_on_capital])
+           return_on_capital: company[:return_on_capital])
     end
   end
 
