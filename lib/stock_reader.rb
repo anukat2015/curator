@@ -75,7 +75,7 @@ module StockReader
       roc = get_return_on_capital(ticker)
       if ey && roc
         company_array << ey.merge(roc)
-        puts "#{ticker} retrieval successful"
+        puts "#{ticker} retrieval successful - No. #{ticker_array.index(ticker) + 1}"
       end
     end
     company_array
