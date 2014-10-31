@@ -40,7 +40,7 @@ module StockReader
   end
 
   def self.get_return_on_capital(ticker)
-    ebit_response AUTH_= HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     if ebit_response.size > 1
       total_assets_response    = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETS_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
       current_assets_response  = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETSC_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
