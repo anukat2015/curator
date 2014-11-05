@@ -35,6 +35,16 @@ RSpec.describe StockReader do
     end
   end
 
+  describe '.get_return_on_capital_data' do
+    it 'retrieves data' do
+      ticker = 'AAPL'
+      roc_data = StockReader.get_return_on_capital_data(ticker)
+      expect(roc_data[:total_assets]["data"].flatten[1]).to be_kind_of(Float)
+      expect(roc_data[:current_assets]["data"].flatten[1]).to be_kind_of(Float)
+      expect(roc_data[:working_capital]["data"].flatten[1]).to be_kind_of(Float)
+    end
+  end
+
   describe '.get_return_on_capital' do
     it 'returns accurate data' do
       test_ticker = 'AAPL'

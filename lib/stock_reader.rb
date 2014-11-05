@@ -23,7 +23,8 @@ module StockReader
         cash       = cash_response["data"].flatten[1]
         ev         = (market_cap + debt) - cash
         ey         = ebit / ev
-                          {symbol: ticker,
+        {
+                            symbol: ticker,
                        total_debt: debt,
                   total_debt_date: debt_response["data"].flatten[0],
                        market_cap: market_cap,
@@ -33,9 +34,18 @@ module StockReader
                              ebit: ebit,
                         ebit_date: ebit_response["data"].flatten[0],
                  enterprise_value: ev,
-                   earnings_yield: ey}
+                   earnings_yield: ey
+        }
       end
     end
+  end
+
+  def self.get_return_on_capital_data(ticker)
+    {
+      :total_assets => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETS_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
+      :current_assets => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
+      :working_capital => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    }
   end
 
   def self.get_return_on_capital(ticker)
@@ -51,14 +61,16 @@ module StockReader
         working_capital   = working_capital_response["data"].flatten[1]
         net_fixed_assets  = total_assets - current_assets
         return_on_capital = ebit / (net_fixed_assets + working_capital)
-                     {symbol: ticker,
+        {
+                      symbol: ticker,
                 total_assets: total_assets,
            total_assets_date: total_assets_response["data"].flatten[0],
               current_assets: current_assets,
          current_assets_date: current_assets_response["data"].flatten[0],
              working_capital: working_capital,
         working_capital_date: working_capital_response["data"].flatten[0],
-           return_on_capital: return_on_capital}
+           return_on_capital: return_on_capital
+        }
       end
     end
   end
