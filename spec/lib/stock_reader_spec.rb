@@ -35,6 +35,16 @@ RSpec.describe StockReader do
     end
   end
 
+  describe '.get_earnings_yield_data' do
+    it 'retrieves data' do
+      ticker = 'AAPL'
+      ey_data = StockReader.get_earnings_yield_data(ticker)
+      expect(ey_data[:market_cap]["data"].flatten[1]).to be_kind_of(Float)
+      expect(ey_data[:cash]["data"].flatten[1]).to be_kind_of(Float)
+      expect(ey_data[:debt]["data"].flatten[1]).to be_kind_of(Float)
+    end
+  end
+
   describe '.get_return_on_capital_data' do
     it 'retrieves data' do
       ticker = 'AAPL'
