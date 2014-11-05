@@ -72,14 +72,9 @@ module StockReader
     end
   end
 
-  def self.sort_by_earnings_yield(company_data, num_to_keep)
-    company_data.reject! { |company| company[:earnings_yield].nil? || company[:earnings_yield].nan? }
-    company_data.sort_by { |company| company[:earnings_yield].to_f }.reverse.take(num_to_keep)
-  end
-
-  def self.sort_by_return_on_capital(company_data, num_to_keep)
-    company_data.reject! { |company| company[:return_on_capital].nil? || company[:return_on_capital].nan? }
-    company_data.sort_by { |company| company[:return_on_capital].to_f }.reverse.take(num_to_keep)
+  def self.sort_company_data(company_data, metric, num_to_keep)
+    company_data.reject! { |company| company[metric].nil? || company[metric].nan? }
+    company_data.sort_by { |company| company[metric].to_f }.reverse.take(num_to_keep)
   end
 
   def self.create_company_reports(company_data_array, company_report)
