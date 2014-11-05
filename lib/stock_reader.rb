@@ -10,35 +10,41 @@ module StockReader
     response_array.map { |res| res["data"] }.none? { |data| data.to_a.empty? }
   end
 
-  def self.get_earnings_yield_data(ticker)
-    {
-      :market_cap => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_MARKETCAP.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
-      :cash => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_CASHNEQ_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
-      :debt => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_DEBT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-    }
+  def self.get_company_data(ticker, metric)
+    if metric == :earnings_yield
+      {
+        :market_cap => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_MARKETCAP.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
+        :cash => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_CASHNEQ_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
+        :debt => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_DEBT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+      }
+    elsif metric == :return_on_capital
+      {
+        :total_assets => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETS_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
+        :current_assets => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETSC_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
+        :working_capital => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+      }
+    end
   end
 
   def self.get_earnings_yield(ticker)
     ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     if ebit_response.size > 1
-      market_cap_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_MARKETCAP.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      cash_response       = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_CASHNEQ_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      debt_response       = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_DEBT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      if data_exists?([ebit_response, market_cap_response, cash_response, debt_response])
+      ey_data = get_company_data(ticker, :earnings_yield)
+      if data_exists?([ebit_response, ey_data[:market_cap], ey_data[:cash], ey_data[:debt]])
         ebit       = ebit_response["data"].flatten[1]
-        market_cap = market_cap_response["data"].flatten[1]
-        debt       = debt_response["data"].flatten[1]
-        cash       = cash_response["data"].flatten[1]
+        market_cap = ey_data[:market_cap]["data"].flatten[1]
+        debt       = ey_data[:debt]["data"].flatten[1]
+        cash       = ey_data[:cash]["data"].flatten[1]
         ev         = (market_cap + debt) - cash
         ey         = ebit / ev
         {
                             symbol: ticker,
                        total_debt: debt,
-                  total_debt_date: debt_response["data"].flatten[0],
+                  total_debt_date: ey_data[:debt]["data"].flatten[0],
                        market_cap: market_cap,
-                  market_cap_date: market_cap_response["data"].flatten[0],
+                  market_cap_date: ey_data[:market_cap]["data"].flatten[0],
              cash_and_equivalents: cash,
-        cash_and_equivalents_date: cash_response["data"].flatten[0],
+        cash_and_equivalents_date: ey_data[:cash]["data"].flatten[0],
                              ebit: ebit,
                         ebit_date: ebit_response["data"].flatten[0],
                  enterprise_value: ev,
@@ -48,35 +54,25 @@ module StockReader
     end
   end
 
-  def self.get_return_on_capital_data(ticker)
-    {
-      :total_assets => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETS_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
-      :current_assets => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
-      :working_capital => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-    }
-  end
-
   def self.get_return_on_capital(ticker)
     ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     if ebit_response.size > 1
-      total_assets_response    = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETS_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      current_assets_response  = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_ASSETSC_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      working_capital_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_WORKINGCAPITAL_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      if data_exists?([ebit_response, total_assets_response, current_assets_response, working_capital_response])
+      roc_data = get_company_data(ticker, :return_on_capital)
+      if data_exists?([ebit_response, roc_data[:total_assets], roc_data[:current_assets], roc_data[:working_capital]])
         ebit              = ebit_response["data"].flatten[1]
-        total_assets      = total_assets_response["data"].flatten[1]
-        current_assets    = current_assets_response["data"].flatten[1]
-        working_capital   = working_capital_response["data"].flatten[1]
+        total_assets      = roc_data[:total_assets]["data"].flatten[1]
+        current_assets    = roc_data[:current_assets]["data"].flatten[1]
+        working_capital   = roc_data[:working_capital]["data"].flatten[1]
         net_fixed_assets  = total_assets - current_assets
         return_on_capital = ebit / (net_fixed_assets + working_capital)
         {
                       symbol: ticker,
                 total_assets: total_assets,
-           total_assets_date: total_assets_response["data"].flatten[0],
+           total_assets_date: roc_data[:total_assets]["data"].flatten[0],
               current_assets: current_assets,
-         current_assets_date: current_assets_response["data"].flatten[0],
+         current_assets_date: roc_data[:current_assets]["data"].flatten[0],
              working_capital: working_capital,
-        working_capital_date: working_capital_response["data"].flatten[0],
+        working_capital_date: roc_data[:working_capital]["data"].flatten[0],
            return_on_capital: return_on_capital
         }
       end
