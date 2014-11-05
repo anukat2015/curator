@@ -10,6 +10,14 @@ module StockReader
     response_array.map { |res| res["data"] }.none? { |data| data.to_a.empty? }
   end
 
+  def self.get_earnings_yield_data(ticker)
+    {
+      :market_cap => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_MARKETCAP.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
+      :cash => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_CASHNEQ_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"),
+      :debt => HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_DEBT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    }
+  end
+
   def self.get_earnings_yield(ticker)
     ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     if ebit_response.size > 1
