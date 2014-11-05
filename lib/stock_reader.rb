@@ -36,8 +36,6 @@ module StockReader
                  enterprise_value: ev,
                    earnings_yield: ey}
       end
-    else
-      nil
     end
   end
 
@@ -63,8 +61,6 @@ module StockReader
         working_capital_date: working_capital_response["data"].flatten[0],
            return_on_capital: return_on_capital}
       end
-    else
-      nil
     end
   end
 
