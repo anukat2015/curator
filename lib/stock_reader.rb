@@ -1,6 +1,5 @@
 require 'csv'
 require 'httparty'
-require 'pry'
 
 module StockReader
   def self.extract_tickers(ticker_file)
@@ -79,26 +78,7 @@ module StockReader
 
   def self.create_company_reports(company_data_array, company_report)
     company_data_array.each do |company|
-      company_report.create(
-                           symbol: company[:symbol],
-                             ebit: company[:ebit].to_s,
-                        ebit_date: company[:ebit_date],
-                       market_cap: company[:market_cap].to_s,
-                  market_cap_date: company[:market_cap_date],
-                  working_capital: company[:working_capital].to_s,
-             working_capital_date: company[:working_capital_date],
-                     total_assets: company[:total_assets].to_s,
-                total_assets_date: company[:total_assets_date],
-                   current_assets: company[:current_assets].to_s,
-              current_assets_date: company[:current_assets_date],
-                       total_debt: company[:total_debt].to_s,
-                  total_debt_date: company[:total_debt_date],
-             cash_and_equivalents: company[:cash_and_equivalents].to_s,
-        cash_and_equivalents_date: company[:cash_and_equivalents_date],
-                     fixed_assets: company[:fixed_assets],
-                 enterprise_value: company[:enterprise_value],
-                   earnings_yield: company[:earnings_yield],
-                return_on_capital: company[:return_on_capital])
+      company_report.create(company.each { |k,v| company[k] = v.to_s })
     end
   end
 

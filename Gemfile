@@ -32,7 +32,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
   gem 'pry'
   gem 'pry-nav'
-  gem 'rubocop', require: false
 end
 
 group :production do
