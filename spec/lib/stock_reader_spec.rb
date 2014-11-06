@@ -46,6 +46,37 @@ RSpec.describe StockReader do
     end
   end
 
+  describe '.generate_hash' do
+    it 'creates a hash from the given variables' do
+      ticker = 'AAPL'
+      ey_query_hash = {:market_cap => "MARKETCAP", :cash => "CASHNEQ_MRQ", :debt => "DEBT_MRQ"}
+      ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+      ey_data = StockReader.get_company_data(ticker, ey_query_hash)
+      ebit       = ebit_response["data"].flatten[1]
+      market_cap = ey_data[:market_cap]["data"].flatten[1]
+      debt       = ey_data[:debt]["data"].flatten[1]
+      cash       = ey_data[:cash]["data"].flatten[1]
+      ev         = (market_cap + debt) - cash
+      ey         = ebit / ev
+      actual = StockReader.generate_hash([ticker, ebit, market_cap, debt, cash, ev, ey])
+      expected = {
+                           symbol: ticker,
+                       total_debt: debt,
+                  total_debt_date: ey_data[:debt]["data"].flatten[0],
+                       market_cap: market_cap,
+                  market_cap_date: ey_data[:market_cap]["data"].flatten[0],
+             cash_and_equivalents: cash,
+        cash_and_equivalents_date: ey_data[:cash]["data"].flatten[0],
+                             ebit: ebit,
+                        ebit_date: ebit_response["data"].flatten[0],
+                 enterprise_value: ev,
+                   earnings_yield: ey
+        }
+
+      expect(actual).to eq(expected)
+    end
+  end
+
   describe '.get_earnings_yield' do
     it 'returns accurate data' do
       test_ticker = 'AAPL'
