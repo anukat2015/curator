@@ -1,3 +1,5 @@
+before_script:
+  - psql -c 'create database curator_test;' -U postgres
 language: ruby
 rvm:
   - "1.8.7"
@@ -8,7 +10,10 @@ rvm:
   - rbx
 addons:
   postgresql: "9.3"
-before_script:
-  - psql -c 'create database curator_test;' -U postgres
+test:
+  adapter: postgresql
+  database: curator_test
+  username: postgres
+
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
