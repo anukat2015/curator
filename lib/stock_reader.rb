@@ -6,9 +6,10 @@ module StockReader
     File.readlines(ticker_file).map { |line| line.match(/\s(\w+)$/).to_s.strip }
   end
 
-  # def self.data_present?(response)
-
-  # end
+  def self.data_present?(ticker)
+    response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+    response.size > 1
+  end
 
   def self.data_exists?(response_array)
     response_array.map { |res| res["data"] }.none? { |data| data.to_a.empty? }
@@ -40,8 +41,7 @@ module StockReader
   end
 
   def self.get_earnings_yield(ticker)
-    ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-    if ebit_response.size > 1
+    if data_present?(ticker)
       ey_query_hash = {:ebit => "EBIT_MRQ", :market_cap => "MARKETCAP", :cash_and_equivalents => "CASHNEQ_MRQ", :total_debt => "DEBT_MRQ"}
       ey_data = get_company_data(ticker, ey_query_hash)
       if data_exists?([ey_data[:ebit], ey_data[:market_cap], ey_data[:cash_and_equivalents], ey_data[:total_debt]])
@@ -51,8 +51,7 @@ module StockReader
   end
 
   def self.get_return_on_capital(ticker)
-    ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-    if ebit_response.size > 1
+    if data_present?(ticker)
       roc_query_hash = {:ebit => "EBIT_MRQ", :total_assets => "ASSETS_MRQ", :current_assets => "ASSETSC_MRQ", :working_capital => "WORKINGCAPITAL_MRQ"}
       roc_data = get_company_data(ticker, roc_query_hash)
       if data_exists?([roc_data[:ebit], roc_data[:total_assets], roc_data[:current_assets], roc_data[:working_capital]])
