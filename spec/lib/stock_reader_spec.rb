@@ -18,8 +18,7 @@ RSpec.describe StockReader do
   describe '.data_present?' do
     it 'checks for data' do
       ticker = 'AAPL'
-      test_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      expect(StockReader.data_present?(test_response)).to be(true)
+      expect(StockReader.data_present?(ticker)).to be(true)
     end
   end
 

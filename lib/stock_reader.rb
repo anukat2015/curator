@@ -6,6 +6,10 @@ module StockReader
     File.readlines(ticker_file).map { |line| line.match(/\s(\w+)$/).to_s.strip }
   end
 
+  # def self.data_present?(response)
+
+  # end
+
   def self.data_exists?(response_array)
     response_array.map { |res| res["data"] }.none? { |data| data.to_a.empty? }
   end
