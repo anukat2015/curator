@@ -18,6 +18,10 @@ module StockReader
     data_responses
   end
 
+  def self.process_data_hash(symbol, data_hash)
+
+  end
+
   def self.get_earnings_yield(ticker)
     ebit_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
     if ebit_response.size > 1
