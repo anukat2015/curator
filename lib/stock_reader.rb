@@ -11,7 +11,7 @@ module StockReader
     response.size > 1
   end
 
-  def self.data_exists?(response_array)
+  def self.data_received?(response_array)
     response_array.map { |res| res["data"] }.none? { |data| data.to_a.empty? }
   end
 
@@ -44,7 +44,7 @@ module StockReader
     if data_present?(ticker)
       ey_query_hash = {:ebit => "EBIT_MRQ", :market_cap => "MARKETCAP", :cash_and_equivalents => "CASHNEQ_MRQ", :total_debt => "DEBT_MRQ"}
       ey_data = get_company_data(ticker, ey_query_hash)
-      if data_exists?([ey_data[:ebit], ey_data[:market_cap], ey_data[:cash_and_equivalents], ey_data[:total_debt]])
+      if data_received?([ey_data[:ebit], ey_data[:market_cap], ey_data[:cash_and_equivalents], ey_data[:total_debt]])
         process_data_hash(ticker, ey_data)
       end
     end
@@ -54,7 +54,7 @@ module StockReader
     if data_present?(ticker)
       roc_query_hash = {:ebit => "EBIT_MRQ", :total_assets => "ASSETS_MRQ", :current_assets => "ASSETSC_MRQ", :working_capital => "WORKINGCAPITAL_MRQ"}
       roc_data = get_company_data(ticker, roc_query_hash)
-      if data_exists?([roc_data[:ebit], roc_data[:total_assets], roc_data[:current_assets], roc_data[:working_capital]])
+      if data_received?([roc_data[:ebit], roc_data[:total_assets], roc_data[:current_assets], roc_data[:working_capital]])
         process_data_hash(ticker, roc_data)
       end
     end
