@@ -19,7 +19,20 @@ module StockReader
   end
 
   def self.process_data_hash(symbol, data_hash)
-
+    h = {:symbol => symbol}
+    data_hash.each do |key, data_obj|
+      h[key] = data_obj["data"].flatten[1]
+      data_key = (key.to_s << "_date").to_sym
+      h[data_key] = data_obj["data"].flatten[0]
+    end
+    if h[:market_cap]
+      h[:enterprise_value] = (h[:market_cap] + h[:total_debt]) - h[:cash_and_equivalents]
+      h[:earnings_yield] = h[:ebit] / h[:enterprise_value]
+    elsif h[:total_assets] && h[:current_assets]
+      net_fixed_assets = h[:total_assets] - h[:current_assets]
+      h[:return_on_capital] = h[:ebit] / (net_fixed_assets + h[:working_capital])
+    end
+    h
   end
 
   def self.get_earnings_yield(ticker)

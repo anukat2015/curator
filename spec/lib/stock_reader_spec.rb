@@ -52,21 +52,20 @@ RSpec.describe StockReader do
       ey_query_hash = {:ebit => "EBIT_MRQ", :market_cap => "MARKETCAP", :cash_and_equivalents => "CASHNEQ_MRQ", :total_debt => "DEBT_MRQ"}
       ey_data = StockReader.get_company_data(ticker, ey_query_hash)
       actual = StockReader.process_data_hash(ticker, ey_data)
-      expected = {
+      test_hash = {
                          symbol: ticker,
-                     total_debt: debt,
-                total_debt_date: ey_data[:debt]["data"].flatten[0],
-                     market_cap: market_cap,
+                     total_debt: ey_data[:total_debt]["data"].flatten[1],
+                total_debt_date: ey_data[:total_debt]["data"].flatten[0],
+                     market_cap: ey_data[:market_cap]["data"].flatten[1],
                 market_cap_date: ey_data[:market_cap]["data"].flatten[0],
-           cash_and_equivalents: cash,
-      cash_and_equivalents_date: ey_data[:cash]["data"].flatten[0],
-                           ebit: ebit,
-                      ebit_date: ebit_response["data"].flatten[0],
-               enterprise_value: ev,
-                 earnings_yield: ey
+           cash_and_equivalents: ey_data[:cash_and_equivalents]["data"].flatten[1],
+      cash_and_equivalents_date: ey_data[:cash_and_equivalents]["data"].flatten[0],
+                           ebit: ey_data[:ebit]["data"].flatten[1],
+                      ebit_date: ey_data[:ebit]["data"].flatten[0],
       }
-
-      expect(actual).to eq(expected)
+      test_hash[:enterprise_value] = (test_hash[:market_cap] + test_hash[:total_debt]) - test_hash[:cash_and_equivalents]
+      test_hash[:earnings_yield] = test_hash[:ebit] / test_hash[:enterprise_value]
+      expect(actual).to eq(test_hash)
     end
   end
 
