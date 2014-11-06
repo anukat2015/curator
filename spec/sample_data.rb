@@ -33,6 +33,8 @@ end
 def return_on_capital_data_1
   {
                 :symbol => "AAPL",
+                  :ebit => 10484000000.0,
+             :ebit_date => "2014-06-28",
           :total_assets => 222520000000.0,
      :total_assets_date => "2014-06-28",
         :current_assets => 67949000000.0,
