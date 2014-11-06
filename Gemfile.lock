@@ -158,6 +158,7 @@ DEPENDENCIES
   pry-nav
   rails (= 4.1.1)
   rails_12factor
+  rake
   rspec-rails (~> 3.0.1)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

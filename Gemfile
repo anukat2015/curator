@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 gem 'httparty'
 gem 'mail'
 
+gem 'rake', group: :test
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
   gem 'pry'
@@ -37,3 +39,4 @@ end
 group :production do
   gem 'rails_12factor'
 end
+

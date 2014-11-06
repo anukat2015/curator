@@ -31,7 +31,7 @@ module StockReader
         ev         = (market_cap + debt) - cash
         ey         = ebit / ev
         {
-                            symbol: ticker,
+                           symbol: ticker,
                        total_debt: debt,
                   total_debt_date: ey_data[:debt]["data"].flatten[0],
                        market_cap: market_cap,
