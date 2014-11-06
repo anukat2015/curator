@@ -10,10 +10,6 @@ rvm:
   - rbx
 addons:
   postgresql: "9.3"
-test:
-  adapter: postgresql
-  database: curator_test
-  username: postgres
 
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
