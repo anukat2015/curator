@@ -29,6 +29,7 @@ gem 'httparty'
 gem 'mail'
 
 gem 'rake', group: :test
+gem "codeclimate-test-reporter", group: :test, require: nil
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
