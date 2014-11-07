@@ -23,6 +23,17 @@ module StockReader
     data_responses
   end
 
+  def self.calculate_ey_and_roc(data)
+    if data[:market_cap]
+      data[:enterprise_value] = (data[:market_cap] + data[:total_debt]) - data[:cash_and_equivalents]
+      data[:earnings_yield] = data[:ebit] / data[:enterprise_value]
+    elsif data[:total_assets] && data[:current_assets]
+      net_fixed_assets = data[:total_assets] - data[:current_assets]
+      data[:return_on_capital] = data[:ebit] / (net_fixed_assets + data[:working_capital])
+    end
+    data
+  end
+
   def self.process_data_hash(symbol, data_hash)
     h = {:symbol => symbol}
     data_hash.each do |key, data_obj|
@@ -30,13 +41,7 @@ module StockReader
       data_key = (key.to_s << "_date").to_sym
       h[data_key] = data_obj["data"].flatten[0]
     end
-    if h[:market_cap]
-      h[:enterprise_value] = (h[:market_cap] + h[:total_debt]) - h[:cash_and_equivalents]
-      h[:earnings_yield] = h[:ebit] / h[:enterprise_value]
-    elsif h[:total_assets] && h[:current_assets]
-      net_fixed_assets = h[:total_assets] - h[:current_assets]
-      h[:return_on_capital] = h[:ebit] / (net_fixed_assets + h[:working_capital])
-    end
+    calculate_ey_and_roc(h)
     h
   end
 

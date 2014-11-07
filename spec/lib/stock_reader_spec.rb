@@ -69,7 +69,7 @@ RSpec.describe StockReader do
       }
       roc_hash =
       {
-        :symbol => "AAPL",
+         :symbol => "AAPL",
          :ebit => 10484000000.0,
          :ebit_date => "2014-06-28",
          :total_assets => 222520000000.0,
