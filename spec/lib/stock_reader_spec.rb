@@ -127,22 +127,6 @@ RSpec.describe StockReader do
     end
   end
 
-  # describe '.get_earnings_yield' do
-  #   it 'returns accurate data' do
-  #     test_ticker = 'AAPL'
-  #     actual = StockReader.get_earnings_yield(test_ticker)
-  #     expect(actual).to eq(earnings_yield_data_1)
-  #   end
-  # end
-
-  # describe '.get_return_on_capital' do
-  #   it 'returns accurate data' do
-  #     test_ticker = 'AAPL'
-  #     actual = StockReader.get_return_on_capital(test_ticker)
-  #     expect(actual).to eq(return_on_capital_data_1)
-  #   end
-  # end
-
   describe '.combine_data' do
     it 'returns an array of combined hashes' do
       ticker_array = ['AAPL']

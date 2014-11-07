@@ -45,30 +45,24 @@ module StockReader
     h
   end
 
-  def self.get_earnings_yield(ticker)
+  def self.get_ey_and_roc(ticker, type)
     if data_present?(ticker)
-      ey_query_hash = {:ebit => "EBIT_MRQ", :market_cap => "MARKETCAP", :cash_and_equivalents => "CASHNEQ_MRQ", :total_debt => "DEBT_MRQ"}
-      ey_data = get_company_data(ticker, ey_query_hash)
-      if data_received?([ey_data[:ebit], ey_data[:market_cap], ey_data[:cash_and_equivalents], ey_data[:total_debt]])
-        process_data_hash(ticker, ey_data)
+      if type == :ey
+        query_hash = {:ebit => "EBIT_MRQ", :market_cap => "MARKETCAP", :cash_and_equivalents => "CASHNEQ_MRQ", :total_debt => "DEBT_MRQ"}
+      elsif type == :roc
+        query_hash = {:ebit => "EBIT_MRQ", :total_assets => "ASSETS_MRQ", :current_assets => "ASSETSC_MRQ", :working_capital => "WORKINGCAPITAL_MRQ"}
       end
+      data = get_company_data(ticker, query_hash)
     end
-  end
-
-  def self.get_return_on_capital(ticker)
-    if data_present?(ticker)
-      roc_query_hash = {:ebit => "EBIT_MRQ", :total_assets => "ASSETS_MRQ", :current_assets => "ASSETSC_MRQ", :working_capital => "WORKINGCAPITAL_MRQ"}
-      roc_data = get_company_data(ticker, roc_query_hash)
-      if data_received?([roc_data[:ebit], roc_data[:total_assets], roc_data[:current_assets], roc_data[:working_capital]])
-        process_data_hash(ticker, roc_data)
-      end
+    if data_received?(data.map { |k,v| v })
+      process_data_hash(ticker, data)
     end
   end
 
   def self.combine_data(ticker_array)
     ticker_array.map do |ticker|
-      ey = get_earnings_yield(ticker)
-      roc = get_return_on_capital(ticker)
+      ey = get_ey_and_roc(ticker, :ey)
+      roc = get_ey_and_roc(ticker, :roc)
       ey.merge(roc) if ey && roc
     end
   end
