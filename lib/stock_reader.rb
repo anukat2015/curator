@@ -65,7 +65,7 @@ module StockReader
     end
   end
 
-  def self.retrieve_data(ticker_array)
+  def self.combine_data(ticker_array)
     ticker_array.map do |ticker|
       ey = get_earnings_yield(ticker)
       roc = get_return_on_capital(ticker)

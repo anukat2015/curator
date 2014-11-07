@@ -116,26 +116,37 @@ RSpec.describe StockReader do
     end
   end
 
-  describe '.get_earnings_yield' do
-    it 'returns accurate data' do
-      test_ticker = 'AAPL'
-      actual = StockReader.get_earnings_yield(test_ticker)
-      expect(actual).to eq(earnings_yield_data_1)
+  describe '.get_ey_and_roc' do
+    it 'retrieves earnings yield and return on capital' do
+      ticker = 'AAPL'
+      ey_data = StockReader.get_ey_and_roc(ticker, :ey)
+      roc_data = StockReader.get_ey_and_roc(ticker, :roc)
+
+      expect(ey_data).to eq(earnings_yield_data_1)
+      expect(roc_data).to eq(return_on_capital_data_1)
     end
   end
 
-  describe '.get_return_on_capital' do
-    it 'returns accurate data' do
-      test_ticker = 'AAPL'
-      actual = StockReader.get_return_on_capital(test_ticker)
-      expect(actual).to eq(return_on_capital_data_1)
-    end
-  end
+  # describe '.get_earnings_yield' do
+  #   it 'returns accurate data' do
+  #     test_ticker = 'AAPL'
+  #     actual = StockReader.get_earnings_yield(test_ticker)
+  #     expect(actual).to eq(earnings_yield_data_1)
+  #   end
+  # end
 
-  describe '.retrieve_data' do
+  # describe '.get_return_on_capital' do
+  #   it 'returns accurate data' do
+  #     test_ticker = 'AAPL'
+  #     actual = StockReader.get_return_on_capital(test_ticker)
+  #     expect(actual).to eq(return_on_capital_data_1)
+  #   end
+  # end
+
+  describe '.combine_data' do
     it 'returns an array of combined hashes' do
       ticker_array = ['AAPL']
-      actual = StockReader.retrieve_data(ticker_array)
+      actual = StockReader.combine_data(ticker_array)
       expected = [return_on_capital_data_1.merge(earnings_yield_data_1)]
       expect(actual).to eq(expected)
     end
