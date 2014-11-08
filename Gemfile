@@ -26,7 +26,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'httparty'
-gem 'mail'
 
 gem 'rake', group: :test
 gem "codeclimate-test-reporter", group: :test, require: nil
