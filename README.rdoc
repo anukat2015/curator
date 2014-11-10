@@ -1,3 +1,0 @@
-{<img src="https://travis-ci.org/mntj/curator.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/mntj/curator]
-{<img src="https://codeclimate.com/github/mntj/curator/badges/gpa.svg" />}[https://codeclimate.com/github/mntj/curator]
-{<img src="https://codeclimate.com/github/mntj/curator/badges/coverage.svg" />}[https://codeclimate.com/github/mntj/curator]
