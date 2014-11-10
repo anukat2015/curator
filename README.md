@@ -7,7 +7,7 @@
 ## About
 **curator** is a stock curation tool that I created to find companies according to investor Joel Greenblatt's [Magic formula investing](http://en.wikipedia.org/wiki/Magic_formula_investing) technique.
 
-**curator** retrieves and calculates financial data on 3,000 publicly traded US companies, chosen from the [Russell 3000 Index](https://www.russell.com/indexes/americas/indexes/fact-sheet.page?ic=US3000), using the [Quandl Sharadar-Fundamentals API](https://www.quandl.com/SHARADAR).
+The application retrieves and calculates financial data on 3,000 publicly traded US companies, chosen from the [Russell 3000 Index](https://www.russell.com/indexes/americas/indexes/fact-sheet.page?ic=US3000), using the [Quandl Sharadar-Fundamentals API](https://www.quandl.com/SHARADAR).
 
 **curator** is designed to provide two lists of companies in CSV format — one ranked by earnings yield and one by return on capital. Investment decisions should not be made without further analysis, however initial results have been promising (the top ranked companies by return on capital from Q2 2014 show an average return of over 35% since late June 2014.)
 
