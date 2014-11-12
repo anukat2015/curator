@@ -21,7 +21,7 @@ You'll also want to [signup for Quandl](https://www.quandl.com/) to receive an a
 
 From there, modify the call to ```curate``` in ```lib/curate.rb``` to specify the number of companies you'd like to keep.
 
-Finally, run ```bin/rails runner lib/curate.rb``` to begin the curation process. When completed, two CSV files will be created with the results in your ```curator``` directory.
+Finally, run ```$ bin/rails runner lib/curate.rb``` to begin the curation process. When completed, two CSV files will be created with the results in your ```curator``` directory.
 
 ## Status
 I'm about to commence a refactor of this application according to Sandi Metz's *Practical Object-Oriented Design in Ruby*, that will result in a much more Rails centric approach as opposed to the existing massive module located in ```lib/stock_reader.rb```.
