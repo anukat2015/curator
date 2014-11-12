@@ -1,6 +1,5 @@
 require 'csv'
 require 'httparty'
-require 'pry'
 
 module StockReader
   def self.extract_tickers(ticker_file)
@@ -54,7 +53,6 @@ module StockReader
         query_hash = {:ebit => "EBIT_MRQ", :total_assets => "ASSETS_MRQ", :current_assets => "ASSETSC_MRQ", :working_capital => "WORKINGCAPITAL_MRQ"}
       end
       data = get_company_data(ticker, query_hash)
-      #binding.pry
     end
     if data && data_received?(data.map { |k,v| v })
       process_data_hash(ticker, data)
