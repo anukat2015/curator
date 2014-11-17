@@ -274,8 +274,21 @@
       "/Users/Corey/code/applications/curator/app/models/company_report_by_return_on_capital.rb": [
         1,
         null
+      ],
+      "/Users/Corey/code/applications/curator/app/models/ticker_extractor.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1416261373
+    "timestamp": 1416263138
   }
 }

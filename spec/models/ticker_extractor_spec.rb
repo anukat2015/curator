@@ -1,5 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe TickerExtractor, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#extract_tickers' do
+    it 'extracts tickers properly' do
+      extractor = TickerExtractor.new('russell20.txt')
+      expected = [
+                  "FLWS",
+                  "SRCE",
+                  "FUBC",
+                  "FOXA",
+                  "XXII",
+                  "TWOU",
+                  "DDD",
+                  "MMM",
+                  "EGHT",
+                  "AHC",
+                  "AVHI",
+                  "ATEN",
+                  "AAON",
+                  "AIR",
+                  "AAN",
+                  "ABAX",
+                  "ABT",
+                  "ABBV",
+                  "ANF",
+                  "ABMD"
+                 ]
+      expect(extractor.extract_tickers).to eq(expected)
+    end
+  end
 end
