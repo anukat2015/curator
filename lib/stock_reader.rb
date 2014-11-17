@@ -63,7 +63,7 @@ module StockReader
     ticker_array.map do |ticker|
       ey = get_ey_and_roc(ticker, :ey)
       roc = get_ey_and_roc(ticker, :roc)
-      p "Done with #{ticker}"
+      puts "Done with #{ticker} No. #{ticker_array.index(ticker)}"
       ey.merge(roc) if ey && roc
     end
   end
