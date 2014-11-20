@@ -19,5 +19,10 @@ RSpec.describe DataValidator, :type => :model do
       actual = DataValidator.new.data_received?(sample_data.map { |k,v| v })
       expect(actual).to be(true)
     end
+
+    it 'returns false if data is not received' do
+      sample_data = [{"data"=>[[]]}]
+      actual = DataValidator.new.data_received?(sample_data.map { |k,v| v })
+    end
   end
 end
