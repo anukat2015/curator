@@ -14,7 +14,7 @@ def curate(num_to_keep)
   StockReader.create_csv(roc_data, "Return on Capital #{Date.today}")
 end
 
-curate(50)
+curate(250)
 
 
 
