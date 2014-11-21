@@ -1,8 +1,9 @@
 class DataValidator
-  attr_reader :ticker
+  attr_reader :ticker, :responses
 
-  def initialize(ticker = nil)
-    @ticker = ticker
+  def initialize(options = {})
+    @ticker = options[:ticker]
+    @responses = options[:responses]
   end
 
   def data_present?
@@ -10,7 +11,7 @@ class DataValidator
     response.size > 1
   end
 
-  def data_received?(response_array)
-    response_array.map { |res| res["data"] }.none? { |data| data.to_a.empty? }
+  def data_received?
+    responses.map { |res| res["data"] }.none? { |data| data.to_a.empty? }
   end
 end
