@@ -32,6 +32,16 @@ RSpec.describe StockReader do
       actual = StockReader.data_received?([ebit_response, market_cap_response, cash_response, debt_response])
       expect(actual).to be(true)
     end
+
+    it 'returns false when data is empty' do
+      ticker = 'FLWS'
+      ebit_response       = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+      market_cap_response = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_MARKETCAP.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+      cash_response       = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_CASHNEQ_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+      debt_response       = HTTParty.get("https://www.quandl.com/api/v1/datasets/SF1/#{ticker}_DEBT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
+      actual = StockReader.data_received?([ebit_response, market_cap_response, cash_response, debt_response])
+      expect(actual).to be(false)
+    end
   end
 
   describe '.get_company_data' do
