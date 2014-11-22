@@ -1,2 +1,2 @@
-class DataWorker < ActiveRecord::Base
+class DataWorker
 end
