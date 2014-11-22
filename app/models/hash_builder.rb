@@ -1,0 +1,2 @@
+class HashBuilder
+end
