@@ -1,7 +1,7 @@
 require 'date'
 
 def curate(num_to_keep)
-  ticker_file = File.open("russell20.txt", "r")
+  ticker_file = File.open("russell3000.txt", "r")
   ticker_array = TickerExtractor.new(ticker_file: ticker_file).extract_tickers
   company_data = DataFactory.new(ticker_array: ticker_array).make_company_hashes
   ey_data = Sorter.new(data: company_data, metric: :earnings_yield, num_to_keep: num_to_keep).sort_company_data
@@ -12,7 +12,7 @@ def curate(num_to_keep)
   Clerk.new(data: roc_data, file_name: "Return on Capital #{Date.today}").create_csv
 end
 
-curate(20)
+curate(50)
 
 
 
