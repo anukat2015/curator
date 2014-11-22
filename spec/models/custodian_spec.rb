@@ -5,10 +5,10 @@ require 'sample_data'
 
 RSpec.describe Custodian, :type => :model do
   describe '#curate' do
+
     before(:all) do
       CompanyReportByEarningsYield.delete_all
       CompanyReportByReturnOnCapital.delete_all
-
       Custodian.new(file: "russell5.txt", num_to_keep: 3).curate
     end
 
