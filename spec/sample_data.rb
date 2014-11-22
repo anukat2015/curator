@@ -57,3 +57,26 @@ def return_on_capital_data_2
      :return_on_capital => 0.01874930455101814
   }
 end
+
+def csv_columns
+  [
+   "Symbol",
+   "Ebit",
+   "Ebit date",
+   "Market cap",
+   "Market cap date",
+   "Cash and equivalents",
+   "Cash and equivalents date",
+   "Total debt",
+   "Total debt date",
+   "Enterprise value",
+   "Earnings yield",
+   "Total assets",
+   "Total assets date",
+   "Current assets",
+   "Current assets date",
+   "Working capital",
+   "Working capital date",
+   "Return on capital"
+  ]
+end

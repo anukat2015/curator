@@ -1,5 +1,7 @@
 require 'rails_helper'
 require 'date'
+require 'csv'
+require 'sample_data'
 
 RSpec.describe Custodian, :type => :model do
   describe '#curate' do
@@ -20,12 +22,16 @@ RSpec.describe Custodian, :type => :model do
     end
 
     it 'creates correct CSV files' do
+      arr = CSV.read("Earnings Yield #{Date.today}.csv")
+      expect(arr[0]).to eq(csv_columns)
 
+      arr = CSV.read("Return on Capital #{Date.today}.csv")
+      expect(arr[0]).to eq(csv_columns)
     end
 
-    # after(:all) do
-    #   File.delete("Earnings Yield #{Date.today}")
-    #   File.delete("Return on Capital #{Date.today}")
-    # end
+    after(:all) do
+      File.delete("Earnings Yield #{Date.today}.csv")
+      File.delete("Return on Capital #{Date.today}.csv")
+    end
   end
 end
