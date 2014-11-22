@@ -1,7 +1,7 @@
 class TickerExtractor
   attr_reader :ticker_file
 
-  def initialize(ticker_file)
+  def initialize(ticker_file:)
     @ticker_file = ticker_file
   end
 
