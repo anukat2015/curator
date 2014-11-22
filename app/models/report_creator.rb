@@ -1,2 +1,2 @@
-class ReportCreator < ActiveRecord::Base
+class ReportCreator
 end

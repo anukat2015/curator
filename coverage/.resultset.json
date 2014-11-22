@@ -167,23 +167,19 @@
         1,
         null
       ],
-      "/Users/Corey/code/applications/curator/app/models/sorter.rb": [
+      "/Users/Corey/code/applications/curator/app/models/report_creator.rb": [
         1,
+        null
+      ],
+      "/Users/Corey/code/applications/curator/app/models/company_report_by_earnings_yield.rb": [
         1,
-        null,
+        null
+      ],
+      "/Users/Corey/code/applications/curator/app/models/company_report_by_return_on_capital.rb": [
         1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        3,
-        3,
-        null,
         null
       ]
     },
-    "timestamp": 1416681537
+    "timestamp": 1416681983
   }
 }
