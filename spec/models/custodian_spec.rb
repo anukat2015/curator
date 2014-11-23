@@ -9,7 +9,7 @@ RSpec.describe Custodian, :type => :model do
     before(:all) do
       CompanyReportByEarningsYield.delete_all
       CompanyReportByReturnOnCapital.delete_all
-      Custodian.new(file: "russell5.txt", num_to_keep: 3).curate
+      Custodian.new(file: "spec/russell5.txt", num_to_keep: 3).curate
     end
 
     it 'creates reports' do
