@@ -14,7 +14,7 @@ The application retrieves and calculates financial data on 3,000 publicly traded
 ## Usage Instructions
 
 First you'll want to clone curator to your local machine:
-```$ git clone git@github.com:mntj/curator.git curator```
+```$ git clone git@github.com:mntj/curator.git```
 
 You'll also want to [signup for Quandl](https://www.quandl.com/) to receive an auth token and then set this as an environment variable in your ```.bash_profile```. For example:
 ```export QUANDL_AUTH_TOKEN=123xyz```
