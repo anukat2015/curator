@@ -3,7 +3,6 @@
 [![Test Coverage](https://codeclimate.com/github/mntj/curator/badges/coverage.svg)](https://codeclimate.com/github/mntj/curator)
 
 # curator
-
 ## About
 **curator** is a stock curation tool that I created to find companies according to investor Joel Greenblatt's [Magic formula investing](http://en.wikipedia.org/wiki/Magic_formula_investing) technique.
 
