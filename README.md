@@ -24,8 +24,11 @@ Finally, run ```$ rake curate``` to begin the curation process. When completed, 
 
 ## Contributing
 
+1. Fork the project
+2. Create a new branch
+3. Write tests
+4. Implement your changes
+5. Create a pull request
+6. Update the Readme (if necessary)
+
 Thanks for contributing!
-
-Fork the project, create a new branch, write tests, implement your changes, and initiate a pull request. Please update the README accordingly.
-
-Bugs? [Create an issue](https://github.com/mntj/curator/issues)
