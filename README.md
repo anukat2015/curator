@@ -18,6 +18,8 @@ First you'll want to clone curator to your local machine:
 You'll also want to [signup for Quandl](https://www.quandl.com/) to receive an auth token and then set this as an environment variable in your ```.bash_profile```. For example:
 ```export QUANDL_AUTH_TOKEN=123xyz```
 
+Additionally you'll need to download and run a [PostgreSQL server](http://postgresapp.com) before running the application.
+
 From there, modify the call to ```curate``` in ```lib/tasks/curate.rake``` to specify the number of companies you'd like to keep.
 
 Finally, run ```$ rake curate``` to begin the curation process. When completed, two CSV files will be created with the results in your ```curator``` directory.
