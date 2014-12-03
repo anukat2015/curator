@@ -9,12 +9,12 @@ RSpec.describe Custodian, :type => :model do
     before(:all) do
       CompanyReportByEarningsYield.delete_all
       CompanyReportByReturnOnCapital.delete_all
-      Custodian.new(file: "spec/russell5.txt", num_to_keep: 3).curate
+      Custodian.new(file: "spec/russell5.txt", num_to_keep: 5).curate
     end
 
     it 'creates reports' do
-      expect(CompanyReportByEarningsYield.count).to eq(3)
-      expect(CompanyReportByReturnOnCapital.count).to eq(3)
+      expect(CompanyReportByEarningsYield.count).to eq(4)
+      expect(CompanyReportByReturnOnCapital.count).to eq(4)
     end
 
     it 'creates CSV files' do
@@ -29,7 +29,7 @@ RSpec.describe Custodian, :type => :model do
 
       arr = CSV.read("Return on Capital #{Date.today}.csv")
       expect(arr[0]).to eq(csv_columns)
-      expect(arr[3]).to eq(csv_data_TTI)
+      expect(arr[4]).to eq(csv_data_TTI)
     end
 
     after(:all) do
