@@ -6,6 +6,6 @@ class TickerExtractor
   end
 
   def extract_tickers
-    File.readlines(ticker_file).map { |line| line.match(/\s(\w+)$/).to_s.strip }
+    File.readlines(ticker_file).map { |line| line.match(/\b(\S+)$/).to_s }
   end
 end
