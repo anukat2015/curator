@@ -1,4 +1,6 @@
 class DataValidator
+  include ErrorChecker
+
   attr_reader :ticker, :responses
 
   BASE_URL = "https://www.quandl.com/api/v1/datasets/SF1/"
@@ -10,13 +12,7 @@ class DataValidator
 
   def data_present?
     response = HTTParty.get(test_url)
-
-    if response['error']
-      puts "#{ticker} ----- " + response['error']
-    elsif response['errors'] && !response['errors'].empty?
-      puts "#{ticker} ----- " + response['errors']
-    end
-
+    ErrorChecker.check_for_errors(response, ticker)
     response.size > 1
   end
 
