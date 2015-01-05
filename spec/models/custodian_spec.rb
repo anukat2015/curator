@@ -4,8 +4,8 @@ require 'csv'
 require 'sample_data'
 
 RSpec.describe Custodian, :type => :model do
-  describe '#curate' do
 
+  describe '#curate' do
     before(:all) do
       CompanyReportByEarningsYield.delete_all
       CompanyReportByReturnOnCapital.delete_all
