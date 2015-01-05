@@ -9,7 +9,9 @@ class DataFactory
     ticker_array.map do |ticker|
       ey = DataWorker.new(ticker: ticker, type: :ey).get_ey_and_roc
       roc = DataWorker.new(ticker: ticker, type: :roc).get_ey_and_roc
-      puts "Done with #{ticker} No. #{ticker_array.index(ticker) + 1}"
+      warn "Earnings Yield retrieval for #{ticker} has failed." unless ey
+      warn "Return on Capital retrieval for #{ticker} has failed." unless roc
+      puts "Done with #{ticker} No. #{ticker_array.index(ticker) + 1}" if ey && roc
       ey.merge(roc) if ey && roc
     end
   end
