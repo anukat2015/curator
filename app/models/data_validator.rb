@@ -10,6 +10,13 @@ class DataValidator
 
   def data_present?
     response = HTTParty.get(test_url)
+
+    if response['error']
+      puts "#{ticker} ----- " + response['error']
+    elsif response['errors'] && !response['errors'].empty?
+      puts "#{ticker} ----- " + response['errors']
+    end
+
     response.size > 1
   end
 
