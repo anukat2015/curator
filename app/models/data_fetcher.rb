@@ -17,8 +17,11 @@ class DataFetcher
       ErrorChecker.check_for_errors(data_responses[metric], ticker)
 
       # Slow down request rate to avoid speed throttling by Quandl
-      sleep 1
+      sleep 3
     end
     data_responses
+    if data_responses.size > 3
+      binding.pry
+    end
   end
 end

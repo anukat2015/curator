@@ -13,10 +13,12 @@ class DataValidator
   def data_present?
     response = HTTParty.get(test_url)
     ErrorChecker.check_for_errors(response, ticker)
+    sleep 3
     response.size > 1
   end
 
   def data_received?
+    sleep 3
     responses.map { |res| res["data"] }.none? { |data| data.to_a.empty? }
   end
 
