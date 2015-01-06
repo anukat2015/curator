@@ -30,6 +30,34 @@ def earnings_yield_data_2
   }
 end
 
+def return_on_capital_data_1
+  {
+                :symbol => "AAPL",
+                  :ebit => 11472000000.0,
+             :ebit_date => "2014-09-27",
+          :total_assets => 231839000000.0,
+     :total_assets_date => "2014-09-27",
+        :current_assets => 68531000000.0,
+   :current_assets_date => "2014-09-27",
+       :working_capital => 5083000000.0,
+  :working_capital_date => "2014-09-27",
+     :return_on_capital => 0.06812715643947717
+  }
+end
+
+def return_on_capital_data_2
+  {
+                :symbol => "AIR",
+          :total_assets => 2199500000.0,
+     :total_assets_date => "2014-05-31",
+        :current_assets => 1116900000.0,
+   :current_assets_date => "2014-05-31",
+       :working_capital => 714800000.0,
+  :working_capital_date => "2014-05-31",
+     :return_on_capital => 0.01874930455101814
+  }
+end
+
 def error_response
   {
     "error" => "Requested entity does not exist."
