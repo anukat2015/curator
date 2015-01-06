@@ -16,7 +16,7 @@ RSpec.describe DataValidator, :type => :model do
 
   describe '#data_received?' do
     it 'returns true if data is received' do
-      actual = DataValidator.new(responses: [earnings_yield_data_1, earnings_yield_data_2]).data_received?
+      actual = DataValidator.new(responses: sample_response_array).data_received?
       expect(actual).to be(true)
     end
 
