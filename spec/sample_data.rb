@@ -58,6 +58,12 @@ def return_on_capital_data_2
   }
 end
 
+def error_response
+  {
+    "error" => "Requested entity does not exist."
+  }
+end
+
 def csv_columns
   [
    "Symbol",
