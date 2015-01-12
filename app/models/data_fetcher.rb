@@ -16,7 +16,7 @@ class DataFetcher
       data_responses[metric] = HTTParty.get(BASE_URL + "#{ticker}_#{quandl_query}.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
       ErrorChecker.check_for_errors(data_responses[metric], ticker)
 
-      sleep 2 # Slow down request rate to avoid speed throttling by Quandl
+      sleep 2.5 # Slow down request rate to avoid speed throttling by Quandl
 
     end
     data_responses
