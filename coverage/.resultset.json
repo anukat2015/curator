@@ -168,6 +168,19 @@
         1,
         null
       ],
+      "/Users/Corey/code/applications/curator/lib/error_checker.rb": [
+        1,
+        1,
+        74,
+        3,
+        71,
+        0,
+        71,
+        0,
+        null,
+        null,
+        null
+      ],
       "/Users/Corey/code/applications/curator/app/mailers/company_report_mailer.rb": [
         1,
         1,
@@ -288,23 +301,10 @@
         58,
         58,
         null,
-        58,
+        null,
         null,
         null,
         15,
-        null,
-        null
-      ],
-      "/Users/Corey/code/applications/curator/lib/error_checker.rb": [
-        1,
-        1,
-        74,
-        3,
-        71,
-        0,
-        71,
-        0,
-        null,
         null,
         null
       ],
@@ -428,6 +428,6 @@
         null
       ]
     },
-    "timestamp": 1421094577
+    "timestamp": 1421268159
   }
 }
