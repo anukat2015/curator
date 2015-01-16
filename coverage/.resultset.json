@@ -171,12 +171,12 @@
       "/Users/Corey/code/applications/curator/lib/error_checker.rb": [
         1,
         1,
-        75,
+        76,
         4,
-        71,
+        72,
         0,
-        71,
-        0,
+        72,
+        1,
         null,
         null,
         null
@@ -425,6 +425,6 @@
         null
       ]
     },
-    "timestamp": 1421451339
+    "timestamp": 1421451747
   }
 }
