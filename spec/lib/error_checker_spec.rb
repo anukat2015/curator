@@ -10,7 +10,7 @@ RSpec.describe ErrorChecker do
     # it 'warns response[\'errors\']' do
     # end
 
-    it 'warns non Hash objects' do
+    it 'warns non Hash responses' do
       expect { ErrorChecker.check_for_errors('Not a response', 'NOTATICKER') }.to output("Not a response\n").to_stderr
     end
   end
