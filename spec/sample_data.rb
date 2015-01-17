@@ -58,12 +58,6 @@ def return_on_capital_data_2
   }
 end
 
-def error_response
-  {
-    "error" => "Requested entity does not exist."
-  }
-end
-
 def csv_columns
   [
    "Symbol",
@@ -210,4 +204,16 @@ def sample_response_array
   "type"=>nil,
   "premium"=>true,
   "data"=>[["2014-09-27", 35295000000.0]]}]
+end
+
+def error_response
+  {
+    "error" => "Requested entity does not exist."
+  }
+end
+
+def errors_response
+  {
+    "errors" => "Something's wrong."
+  }
 end

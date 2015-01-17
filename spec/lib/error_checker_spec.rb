@@ -7,8 +7,9 @@ RSpec.describe ErrorChecker do
       expect { ErrorChecker.check_for_errors(error_response, 'AAFL') }.to output("AAFL ----- Requested entity does not exist.\n").to_stderr
     end
 
-    # it 'warns response[\'errors\']' do
-    # end
+    it 'warns response[\'errors\']' do
+      expect { ErrorChecker.check_for_errors(errors_response, 'NOTATICKER') }.to output("NOTATICKER ----- Something's wrong.\n").to_stderr
+    end
 
     it 'warns non Hash responses' do
       expect { ErrorChecker.check_for_errors('Not a response', 'NOTATICKER') }.to output("Not a response\n").to_stderr
