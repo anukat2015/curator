@@ -12,7 +12,7 @@ module ErrorChecker
 
   private
 
-  def slow_down
+  def self.slow_down
     time_out = 30
     puts "Pausing for #{time_out} seconds..."
     sleep time_out
