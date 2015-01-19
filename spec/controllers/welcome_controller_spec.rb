@@ -12,5 +12,13 @@ RSpec.describe WelcomeController, :type => :controller do
       get :index
       expect(response).to render_template("index")
     end
+
+    it 'loads all of the ey_reports into @ey_reports' do
+      ey_report1 = CompanyReportByEarningsYield.create!
+      ey_report2 = CompanyReportByEarningsYield.create!
+      get :index
+
+      expect(assigns(:posts)).to match_array([ey_report1, ey_report2])
+    end
   end
 end
