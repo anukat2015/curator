@@ -2,6 +2,11 @@ require "rails_helper"
 
 RSpec.describe WelcomeController, :type => :controller do
   describe 'GET #index' do
+    before(:all) do
+      CompanyReportByEarningsYield.delete_all
+      CompanyReportByReturnOnCapital.delete_all
+    end
+
     it 'responds successfully with an HTTP 200 status code' do
       get :index
       expect(response).to be_success
@@ -14,11 +19,12 @@ RSpec.describe WelcomeController, :type => :controller do
     end
 
     it 'loads all of the ey_reports into @ey_reports' do
+      CompanyReportByEarningsYield.delete_all
       ey_report1 = CompanyReportByEarningsYield.create!
       ey_report2 = CompanyReportByEarningsYield.create!
       get :index
 
-      expect(assigns(:posts)).to match_array([ey_report1, ey_report2])
+      expect(assigns(:ey_reports)).to match_array([ey_report1, ey_report2])
     end
   end
 end
