@@ -19,12 +19,19 @@ RSpec.describe WelcomeController, :type => :controller do
     end
 
     it 'loads all of the ey_reports into @ey_reports' do
-      CompanyReportByEarningsYield.delete_all
       ey_report1 = CompanyReportByEarningsYield.create!
       ey_report2 = CompanyReportByEarningsYield.create!
       get :index
 
       expect(assigns(:ey_reports)).to match_array([ey_report1, ey_report2])
+    end
+
+    it 'loads all of the roc_reports into @roc_reports' do
+      roc_report1 = CompanyReportByReturnOnCapital.create!
+      roc_report2 = CompanyReportByReturnOnCapital.create!
+      get :index
+
+      expect(assigns(:roc_reports)).to match_array([roc_report1, roc_report2])
     end
   end
 end
