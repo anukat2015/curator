@@ -1,5 +1,4 @@
 class DataValidator
-  include ErrorChecker
 
   attr_reader :ticker, :responses
 
@@ -12,7 +11,7 @@ class DataValidator
 
   def data_present?
     response = HTTParty.get(test_url)
-    ErrorChecker.check_for_errors(response, ticker)
+    ErrorChecker.new(response: response, ticker: ticker).check_for_errors
     response.size > 1
   end
 

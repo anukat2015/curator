@@ -1,5 +1,4 @@
 class DataFetcher
-  include ErrorChecker
 
   attr_reader :ticker, :query_hash
 
@@ -14,7 +13,7 @@ class DataFetcher
     data_responses = {}
     query_hash.each do |metric, quandl_query|
       data_responses[metric] = HTTParty.get(BASE_URL + "#{ticker}_#{quandl_query}.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      ErrorChecker.check_for_errors(data_responses[metric], ticker)
+      ErrorChecker.new(response: data_responses[metric], ticker: ticker).check_for_errors
     end
     data_responses
   end
