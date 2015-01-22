@@ -1,14 +1,4 @@
 class DataValidator
-
-  attr_reader :ticker, :responses
-
-  BASE_URL = "https://www.quandl.com/api/v1/datasets/SF1/"
-
-  def initialize(options = {})
-    @ticker = options[:ticker]
-    @responses = options[:responses]
-  end
-
   def data_present?
     response = HTTParty.get(test_url)
     ErrorChecker.new(response: response, ticker: ticker).check_for_errors
@@ -20,6 +10,15 @@ class DataValidator
   end
 
   private
+
+  attr_reader :ticker, :responses
+
+  BASE_URL = "https://www.quandl.com/api/v1/datasets/SF1/"
+
+  def initialize(options = {})
+    @ticker = options[:ticker]
+    @responses = options[:responses]
+  end
 
   def test_url
     BASE_URL + "#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"
