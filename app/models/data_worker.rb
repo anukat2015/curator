@@ -1,11 +1,4 @@
 class DataWorker
-  attr_reader :ticker, :type
-
-  def initialize(ticker:, type:)
-    @ticker = ticker
-    @type = type
-  end
-
   def get_ey_and_roc
     if DataValidator.new(ticker: ticker).data_present?
       if type == :ey
@@ -18,5 +11,14 @@ class DataWorker
     if data && DataValidator.new(responses: data.map { |k,v| v }).data_received?
       HashBuilder.new(ticker: ticker, data: data).build_hash
     end
+  end
+
+  private
+
+  attr_reader :ticker, :type
+
+  def initialize(ticker:, type:)
+    @ticker = ticker
+    @type = type
   end
 end

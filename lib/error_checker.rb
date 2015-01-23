@@ -1,9 +1,4 @@
 class ErrorChecker
-  def initialize(response:, ticker:)
-    @response = response
-    @ticker = ticker
-  end
-
   def check_for_errors
     warn_if_error
     warn_if_errors
@@ -14,6 +9,11 @@ class ErrorChecker
   private
 
   attr_reader :response, :ticker
+
+  def initialize(response:, ticker:)
+    @response = response
+    @ticker = ticker
+  end
 
   def warn_if_error
     if response['error'] && !response['error'].empty?

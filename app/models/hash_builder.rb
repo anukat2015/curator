@@ -1,11 +1,4 @@
 class HashBuilder
-  attr_reader :ticker, :data
-
-  def initialize(ticker:, data:)
-    @ticker = ticker
-    @data = data
-  end
-
   def build_hash
     h = {:symbol => ticker}
     data.each do |key, data_obj|
@@ -14,5 +7,14 @@ class HashBuilder
       h[data_key] = data_obj["data"].flatten[0]
     end
     Accountant.new(data: h).calculate_ey_and_roc
+  end
+
+  private
+
+  attr_reader :ticker, :data
+
+  def initialize(ticker:, data:)
+    @ticker = ticker
+    @data = data
   end
 end
