@@ -3,7 +3,7 @@ class ErrorChecker
     warn_if_error
     warn_if_errors
     warn_if_response_is_not_a_hash
-    slow_down(60) if requesting_too_fast?
+    slow_down(5) if requesting_too_fast?
   end
 
   private

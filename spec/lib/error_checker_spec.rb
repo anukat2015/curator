@@ -12,12 +12,16 @@ RSpec.describe ErrorChecker do
     end
 
     it 'warns non Hash responses' do
-      expect { ErrorChecker.new(response: 'Not a response', ticker: 'NOTATICKER').check_for_errors }.to output("Not a response\n").to_stderr
+      expect { ErrorChecker.new(response: 'Not a hash', ticker: 'NOTATICKER').check_for_errors }.to output("Not a hash\n").to_stderr
+    end
+
+    it 'calls slow_down when requests are being made too quickly' do
+      expect { ErrorChecker.new(response: 'too quickly', ticker: 'NOTATICKER').check_for_errors }.to output("Pausing for 5 seconds...\nResuming...\n").to_stdout
     end
   end
 
   describe '.slow_down' do
-    it 'sleeps' do
+    it 'alerts the user that the app is pausing its requests' do
     end
   end
 end
