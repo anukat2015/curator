@@ -16,7 +16,7 @@ RSpec.describe ErrorChecker do
     end
 
     it 'calls slow_down when requests are being made too quickly' do
-      expect { ErrorChecker.new(response: 'too quickly', ticker: 'NOTATICKER').check_for_errors }.to output("Pausing for 5 seconds...\nResuming...\n").to_stdout
+      expect { ErrorChecker.new(response: 'too quickly', ticker: 'NOTATICKER', timeout_seconds: 1).check_for_errors }.to output("Pausing for 1 seconds...\nResuming...\n").to_stdout
     end
   end
 
