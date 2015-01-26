@@ -3,16 +3,17 @@ class ErrorChecker
     warn_if_error
     warn_if_errors
     warn_if_response_is_not_a_hash
-    slow_down(5) if requesting_too_fast?
+    slow_down if requesting_too_fast?
   end
 
   private
 
-  attr_reader :response, :ticker
+  attr_reader :response, :ticker, :timeout
 
-  def initialize(response:, ticker:)
-    @response = response
-    @ticker = ticker
+  def initialize(options = {})
+    @response = options[:response]
+    @ticker = options[:ticker]
+    @timeout = options[:timeout]
   end
 
   def warn_if_error
@@ -37,9 +38,9 @@ class ErrorChecker
     response.include? "too quickly"
   end
 
-  def slow_down(time)
-    puts "Pausing for #{time} seconds..."
-    sleep time
+  def slow_down
+    puts "Pausing for #{timeout} seconds..."
+    sleep timeout
     puts "Resuming..."
   end
 end
