@@ -19,9 +19,4 @@ RSpec.describe ErrorChecker do
       expect { ErrorChecker.new(response: 'too quickly', ticker: 'NOTATICKER', timeout: 0).check_for_errors }.to output("Pausing for 0 seconds...\nResuming...\n").to_stdout
     end
   end
-
-  describe '.slow_down' do
-    it 'alerts the user that the app is pausing its requests' do
-    end
-  end
 end
