@@ -10,10 +10,10 @@ class ErrorChecker
 
   attr_reader :response, :ticker, :timeout
 
-  def initialize(options = {})
-    @response = options[:response]
-    @ticker = options[:ticker]
-    @timeout = options[:timeout]
+  def initialize(response:, ticker:, timeout:)
+    @response = response
+    @ticker = ticker
+    @timeout = timeout
   end
 
   def warn_if_error
