@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'sample_data'
 
-RSpec.describe ReportCreator, :type => :model do
+RSpec.describe ReportCreator do
   describe '#create_company_reports' do
     before(:all) do
       CompanyReportByEarningsYield.delete_all

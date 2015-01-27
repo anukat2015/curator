@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'sample_data'
 
-RSpec.describe Clerk, :type => :model do
+RSpec.describe Clerk do
   describe '#create_csv' do
 
     it 'creates csv files' do

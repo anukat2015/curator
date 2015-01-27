@@ -3,7 +3,7 @@ require 'date'
 require 'csv'
 require 'sample_data'
 
-RSpec.describe Custodian, :type => :model do
+RSpec.describe Custodian do
 
   describe '#curate' do
     before(:all) do

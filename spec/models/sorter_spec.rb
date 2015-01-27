@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'sample_data'
 
-RSpec.describe Sorter, :type => :model do
+RSpec.describe Sorter do
   describe '#sort_company_data' do
     it 'sorts by the given metric' do
       company_data = [earnings_yield_data_1, earnings_yield_data_2]

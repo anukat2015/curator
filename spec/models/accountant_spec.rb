@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Accountant, :type => :model do
+RSpec.describe Accountant do
   describe '#calculate_ey_and_roc' do
     it 'calculates correctly' do
       ey_hash =
