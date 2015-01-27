@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'sample_data'
 
-RSpec.describe DataValidator, :type => :model do
+RSpec.describe DataValidator do
   describe '#data_present?' do
     it 'returns true if data is present' do
       actual = DataValidator.new(ticker: 'AAPL').data_present?

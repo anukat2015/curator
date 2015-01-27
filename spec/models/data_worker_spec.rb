@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'sample_data'
 
-RSpec.describe DataWorker, :type => :model do
+RSpec.describe DataWorker do
   describe '#get_ey_and_roc' do
     it 'amalgamates data correctly' do
       ticker = 'AAPL'

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TickerExtractor, :type => :model do
+RSpec.describe TickerExtractor do
   describe '#extract_tickers' do
     it 'extracts tickers properly' do
       extractor = TickerExtractor.new(ticker_file: 'spec/russell20.txt')

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DataFetcher, :type => :model do
+RSpec.describe DataFetcher do
   describe '#get_company_data' do
     it 'retrieves data for calculating earnings yield' do
       ticker = 'AAPL'

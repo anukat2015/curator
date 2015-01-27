@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe HashBuilder, :type => :model do
+RSpec.describe HashBuilder do
   describe '#build_hash' do
     it 'returns a proper company hash object' do
       ticker = 'AAPL'

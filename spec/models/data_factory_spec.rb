@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'sample_data'
 
-RSpec.describe DataFactory, :type => :model do
+RSpec.describe DataFactory do
   describe '#make_company_hashes' do
     it 'returns an array of combined hashes' do
       ticker_array = ['AAPL']
