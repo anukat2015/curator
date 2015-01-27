@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126044039) do
+ActiveRecord::Schema.define(version: 20150127042735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,27 @@ ActiveRecord::Schema.define(version: 20150126044039) do
   create_table "reports", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "symbol"
+    t.float    "ebit"
+    t.string   "ebit_date"
+    t.float    "market_cap"
+    t.string   "market_cap_date"
+    t.float    "working_capital"
+    t.string   "working_capital_date"
+    t.float    "fixed_assets"
+    t.string   "fixed_assets_date"
+    t.float    "total_assets"
+    t.string   "total_assets_date"
+    t.float    "current_assets"
+    t.string   "current_assets_date"
+    t.float    "total_debt"
+    t.string   "total_debt_date"
+    t.float    "cash_and_equivalents"
+    t.string   "cash_and_equivalents_date"
+    t.float    "enterprise_value"
+    t.float    "return_on_capital"
+    t.float    "earnings_yield"
   end
 
 end
