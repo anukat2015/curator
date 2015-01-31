@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 class DataWorker
   def get_ey_and_roc
     if data_exists?
