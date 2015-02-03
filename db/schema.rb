@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127042735) do
+ActiveRecord::Schema.define(version: 20150203020720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20150127042735) do
     t.float    "working_capital"
     t.string   "working_capital_date"
     t.float    "fixed_assets"
-    t.string   "fixed_assets_date"
     t.float    "total_assets"
     t.string   "total_assets_date"
     t.float    "current_assets"
