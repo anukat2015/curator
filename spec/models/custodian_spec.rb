@@ -9,12 +9,12 @@ RSpec.describe Custodian do
     before(:all) do
       CompanyReportByEarningsYield.delete_all
       CompanyReportByReturnOnCapital.delete_all
+      Report.delete_all
       Custodian.new(file: "spec/russell5.txt", num_to_keep: 5).curate
     end
 
     it 'creates reports' do
-      expect(CompanyReportByEarningsYield.count).to eq(4)
-      expect(CompanyReportByReturnOnCapital.count).to eq(4)
+      expect(Report.count).to eq(4)
     end
 
     it 'creates CSV files' do
