@@ -1,3 +1,27 @@
+def sample_company_data
+  {
+    :symbol => "AAPL",
+    :ebit => 24416000000.0,
+    :ebit_date => "2014-12-27",
+    :market_cap => 671651691880.0,
+    :market_cap_date => "2015-01-28",
+    :working_capital => 9792000000.0,
+    :working_capital_date => "2014-12-27",
+    :fixed_assets => 12345.0,
+    :total_assets => 261893999999.99997,
+    :total_assets_date => "2014-12-27",
+    :current_assets => 83403000000.0,
+    :current_assets_date => "2014-12-27",
+    :total_debt => 36403000000.0,
+    :total_debt_date => "2014-12-27",
+    :cash_and_equivalents => 19478000000.0,
+    :cash_and_equivalents_date => "2014-12-27",
+    :enterprise_value => 688576691880.0,
+    :earnings_yield => 0.03545865012267223
+  }
+end
+
+
 def earnings_yield_data_1
   {
                      :symbol => "AAPL",

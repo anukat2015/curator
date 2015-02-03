@@ -8,9 +8,9 @@ RSpec.describe ReportCreator do
     end
 
     it 'creates reports' do
-      earnings_yield_array = [earnings_yield_data_1, earnings_yield_data_2]
-      ReportCreator.new(data: earnings_yield_array, type: Report).create_company_reports
-      expect(Report.count).to eq(2)
+      company_data_array = [sample_company_data]
+      ReportCreator.new(data: company_data_array, type: Report).create_company_reports
+      expect(Report.count).to eq(1)
     end
   end
 end
