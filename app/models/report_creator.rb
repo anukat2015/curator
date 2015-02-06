@@ -1,7 +1,7 @@
 class ReportCreator
   def create_company_reports
-    dat = data.deep_dup
-    dat.each do |company|
+    company_data = data.deep_dup
+    company_data.each do |company|
       Report.create(company.each { |k,v| company[k] = v.to_s })
     end
   end

@@ -16,15 +16,7 @@ class Custodian
   end
 
   def persist_reports
-    ReportCreator.new(
-      data: ey_data,
-      type: CompanyReportByEarningsYield
-    ).create_company_reports
-
-    ReportCreator.new(
-      data: roc_data,
-      type: CompanyReportByReturnOnCapital
-    ).create_company_reports
+    ReportCreator.new(data: ey_data).create_company_reports
   end
 
   def ey_data
