@@ -17,7 +17,6 @@ RSpec.describe Report, :type => :model do
       working_capital: 123456789.101,
       working_capital_date: '2000-01-01',
       fixed_assets: 123456789.101,
-      fixed_assets_date: '2000-01-01',
       total_assets: 123456789.101,
       total_assets_date: '2000-01-01',
       current_assets: 123456789.101,
