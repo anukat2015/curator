@@ -17,7 +17,8 @@ def sample_company_data
     :cash_and_equivalents => 19478000000.0,
     :cash_and_equivalents_date => "2014-12-27",
     :enterprise_value => 688576691880.0,
-    :earnings_yield => 0.03545865012267223
+    :earnings_yield => 0.03545865012267223,
+    :return_on_capital => 0.12967713495111086
   }
 end
 
