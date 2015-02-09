@@ -13,10 +13,10 @@ class Custodian
   end
 
   def persist_reports
-    ReportCreator.new(data: ey_data).create_company_reports
+    ReportCreator.new(data: sorted_company_data).create_company_reports
   end
 
-  def ey_data
+  def sorted_company_data
     @ey_data ||= Sorter.new(
       data: company_data,
       metric: :earnings_yield,
