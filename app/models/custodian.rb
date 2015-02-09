@@ -1,9 +1,6 @@
-require 'date'
-
 class Custodian
   def curate
     persist_reports
-    create_csvs
   end
 
   private
@@ -44,17 +41,5 @@ class Custodian
   def ticker_array
     ticker_file = File.open(file, "r")
     TickerExtractor.new(ticker_file: ticker_file).extract_tickers
-  end
-
-  def create_csvs
-    Clerk.new(
-      data: ey_data,
-      file_name: "Earnings Yield #{Date.today}"
-    ).create_csv
-
-    Clerk.new(
-      data: roc_data,
-      file_name: "Return on Capital #{Date.today}"
-    ).create_csv
   end
 end
