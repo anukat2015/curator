@@ -24,14 +24,6 @@ class Custodian
     ).sort_company_data
   end
 
-  def roc_data
-    @roc_data ||= Sorter.new(
-      data: company_data,
-      metric: :return_on_capital,
-      num_to_keep: num_to_keep
-    ).sort_company_data
-  end
-
   def company_data
     @company_data ||= DataFactory.new(
       ticker_array: ticker_array
