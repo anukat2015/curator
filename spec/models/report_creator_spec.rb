@@ -8,7 +8,7 @@ RSpec.describe ReportCreator do
     end
 
     it 'creates reports' do
-      company_data_array = [sample_company_data]
+      company_data_array = [sample_company_data_1]
       ReportCreator.new(data: company_data_array).create_company_reports
       expect(Report.count).to eq(1)
     end

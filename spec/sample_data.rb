@@ -1,4 +1,4 @@
-def sample_company_data
+def sample_company_data_1
   {
     :symbol => "AAPL",
     :ebit => 24416000000.0,
@@ -22,6 +22,53 @@ def sample_company_data
   }
 end
 
+def sample_company_data_2
+  {
+    :symbol => "INFI",
+    :ebit => 107754000,
+    :ebit_date => "2014-09-30",
+    :market_cap => 661766602.31,
+    :market_cap_date => "2014-11-10",
+    :working_capital => 332302000,
+    :working_capital_date => "2014-09-30",
+    :fixed_assets => 123456789,
+    :total_assets => 396825000,
+    :total_assets_date => "2014-09-30",
+    :current_assets => 390715000,
+    :current_assets_date => "2014-09-30",
+    :total_debt => 0,
+    :total_debt_date => "2014-09-30",
+    :cash_and_equivalents => 323419000,
+    :cash_and_equivalents_date => "2014-09-30",
+    :enterprise_value => 338347602,
+    :earnings_yield => 0.318471297755123,
+    :return_on_capital => 0.318410694656217
+  }
+end
+
+def sample_company_data_3
+  {
+    :symbol => "TSRA",
+    :ebit => 149053000,
+    :ebit_date => "2014-09-30",
+    :market_cap => 1586275097,
+    :market_cap_date => "2014-11-04",
+    :working_capital => 390891000,
+    :working_capital_date => "2014-09-30",
+    :fixed_assets => 123456789,
+    :total_assets => 556523000,
+    :total_assets_date => "2014-09-30",
+    :current_assets => 430812000,
+    :current_assets_date => "2014-09-30",
+    :total_debt => 0,
+    :total_debt_date => "2014-09-30",
+    :cash_and_equivalents => 47338000,
+    :cash_and_equivalents_date => "2014-09-30",
+    :enterprise_value => 1538937097,
+    :earnings_yield => 0.0968545109588651,
+    :return_on_capital => 0.288525789679482
+  }
+end
 
 def earnings_yield_data_1
   {
