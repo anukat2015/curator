@@ -1,6 +1,5 @@
 class Custodian
   def curate
-    persist_reports
   end
 
   private
@@ -10,10 +9,6 @@ class Custodian
   def initialize(file:, num_to_keep:)
     @file = file
     @num_to_keep = num_to_keep
-  end
-
-  def persist_reports
-    ReportCreator.new(data: sorted_company_data).create_company_reports
   end
 
   def sorted_company_data
