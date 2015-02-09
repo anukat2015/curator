@@ -17,7 +17,7 @@ class Custodian
   end
 
   def sorted_company_data
-    @ey_data ||= Sorter.new(
+    @sorted_data ||= Sorter.new(
       data: company_data,
       metric: :earnings_yield,
       num_to_keep: num_to_keep
