@@ -4,29 +4,9 @@ class Custodian
 
   private
 
-  attr_reader :file, :num_to_keep
+  attr_reader :num_to_keep
 
-  def initialize(file:, num_to_keep:)
-    @file = file
+  def initialize(num_to_keep:)
     @num_to_keep = num_to_keep
-  end
-
-  def sorted_company_data
-    @sorted_data ||= Sorter.new(
-      data: company_data,
-      metric: :earnings_yield,
-      num_to_keep: num_to_keep
-    ).sort_company_data
-  end
-
-  def company_data
-    @company_data ||= DataFactory.new(
-      ticker_array: ticker_array
-    ).make_company_hashes
-  end
-
-  def ticker_array
-    ticker_file = File.open(file, "r")
-    TickerExtractor.new(ticker_file: ticker_file).extract_tickers
   end
 end
