@@ -4,8 +4,11 @@ class DataGatherer
 
   private
 
-  def initialize()
+  def initialize(file:)
+    @file = file
   end
+
+  attr_reader :file
 
   def company_data
     @company_data ||= DataFactory.new(
