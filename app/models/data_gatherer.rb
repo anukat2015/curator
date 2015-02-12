@@ -1,6 +1,5 @@
 class DataGatherer
   def gather_data
-
   end
 
   private
