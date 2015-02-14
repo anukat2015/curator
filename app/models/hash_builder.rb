@@ -11,12 +11,12 @@ class HashBuilder
 
   private
 
-  attr_reader :ticker, :data
-
   def initialize(ticker:, data:)
     @ticker = ticker
     @data = data
   end
+
+  attr_reader :ticker, :data
 
   def get_value(response_object)
     response_object["data"].flatten[1].round(2)

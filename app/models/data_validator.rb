@@ -11,14 +11,14 @@ class DataValidator
 
   private
 
-  attr_reader :ticker, :responses
-
-  BASE_URL = "https://www.quandl.com/api/v1/datasets/SF1/"
-
   def initialize(options = {})
     @ticker = options[:ticker]
     @responses = options[:responses]
   end
+
+  attr_reader :ticker, :responses
+
+  BASE_URL = "https://www.quandl.com/api/v1/datasets/SF1/"
 
   def test_url
     BASE_URL + "#{ticker}_EBIT_MRQ.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}"

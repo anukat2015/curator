@@ -9,12 +9,12 @@ class DataWorker
 
   private
 
-  attr_reader :ticker, :type, :query_hash, :data
-
   def initialize(ticker:, type:)
     @ticker = ticker
     @type = type
   end
+
+  attr_reader :ticker, :type, :query_hash, :data
 
   def data_exists?
     DataValidator.new(ticker: ticker).data_present?

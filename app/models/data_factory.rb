@@ -12,9 +12,9 @@ class DataFactory
 
   private
 
-  attr_reader :ticker_array
-
   def initialize(ticker_array:)
     @ticker_array = ticker_array
   end
+
+  attr_reader :ticker_array
 end

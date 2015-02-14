@@ -8,9 +8,9 @@ class ReportCreator
 
   private
 
-  attr_reader :data
-
   def initialize(data:)
     @data = data
   end
+
+  attr_reader :data
 end

@@ -11,12 +11,10 @@ class DataGatherer
   attr_reader :ticker_file
 
   def company_data
-    @company_data ||= DataFactory.new(
-      ticker_array: ticker_array
-    ).make_company_hashes
+    DataFactory.new(ticker_array: tickers).make_company_hashes
   end
 
-  def ticker_array
+  def tickers
     file = File.open(ticker_file, "r")
     TickerExtractor.new(ticker_file: file).extract_tickers
   end

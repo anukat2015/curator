@@ -10,12 +10,12 @@ class DataFetcher
 
   private
 
-  attr_reader :ticker, :query_hash
-
-  BASE_URL = "https://www.quandl.com/api/v1/datasets/SF1/"
-
   def initialize(ticker:, query_hash:)
     @ticker = ticker
     @query_hash = query_hash
   end
+
+  attr_reader :ticker, :query_hash
+
+  BASE_URL = "https://www.quandl.com/api/v1/datasets/SF1/"
 end
