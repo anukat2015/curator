@@ -31,9 +31,9 @@ RSpec.describe Accountant do
       completed_ey_hash = Accountant.new(data: ey_hash).calculate_ey_and_roc
       completed_roc_hash = Accountant.new(data: roc_hash).calculate_ey_and_roc
       ev = (ey_hash[:market_cap] + ey_hash[:total_debt]) - ey_hash[:cash_and_equivalents]
-      ey = ey_hash[:ebit] / ev
+      ey = (ey_hash[:ebit] / ev).round(6)
       net_fixed_assets = roc_hash[:total_assets] - roc_hash[:current_assets]
-      roc = roc_hash[:ebit] / (net_fixed_assets + roc_hash[:working_capital])
+      roc = (roc_hash[:ebit] / (net_fixed_assets + roc_hash[:working_capital])).round(6)
 
       expect(completed_ey_hash[:enterprise_value]).to eq(ev)
       expect(completed_ey_hash[:earnings_yield]).to eq(ey)
