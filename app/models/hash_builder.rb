@@ -19,7 +19,7 @@ class HashBuilder
   end
 
   def get_value(response_object)
-    response_object["data"].flatten[1]
+    response_object["data"].flatten[1].round(2)
   end
 
   def get_date(response_object)
