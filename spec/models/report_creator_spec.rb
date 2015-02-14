@@ -16,34 +16,34 @@ RSpec.describe ReportCreator do
     it 'stores persists data correctly' do
       report = Report.first
 
-      expect(report.symbol).to eq("AAPL")
+      expect(report.symbol).to eq(sample_company_data_1[:symbol])
 
-      expect(report.ebit).to eq(24416000000.0)
-      expect(report.ebit_date).to eq("2014-12-27")
+      expect(report.ebit).to eq(sample_company_data_1[:ebit])
+      expect(report.ebit_date).to eq(sample_company_data_1[:ebit_date])
 
-      expect(report.market_cap).to eq(671651691880.0)
-      expect(report.market_cap_date).to eq("2015-01-28")
+      expect(report.market_cap).to eq(sample_company_data_1[:market_cap])
+      expect(report.market_cap_date).to eq(sample_company_data_1[:market_cap_date])
 
-      expect(report.working_capital).to eq(9792000000.0)
-      expect(report.working_capital_date).to eq("2014-12-27")
+      expect(report.working_capital).to eq(sample_company_data_1[:working_capital])
+      expect(report.working_capital_date).to eq(sample_company_data_1[:working_capital_date])
 
-      expect(report.fixed_assets).to eq(12345.0)
+      expect(report.fixed_assets).to eq(sample_company_data_1[:fixed_assets])
 
-      expect(report.total_assets).to eq(261894000000.0)
-      expect(report.total_assets_date).to eq("2014-12-27")
+      expect(report.total_assets).to eq(sample_company_data_1[:total_assets])
+      expect(report.total_assets_date).to eq(sample_company_data_1[:total_assets_date])
 
-      expect(report.current_assets).to eq(83403000000.0)
-      expect(report.current_assets_date).to eq("2014-12-27")
+      expect(report.current_assets).to eq(sample_company_data_1[:current_assets])
+      expect(report.current_assets_date).to eq(sample_company_data_1[:current_assets_date])
 
-      expect(report.total_debt).to eq(36403000000.0)
-      expect(report.total_debt_date).to eq("2014-12-27")
+      expect(report.total_debt).to eq(sample_company_data_1[:total_debt])
+      expect(report.total_debt_date).to eq(sample_company_data_1[:total_debt_date])
 
-      expect(report.cash_and_equivalents).to eq(19478000000.0)
-      expect(report.cash_and_equivalents_date).to eq("2014-12-27")
+      expect(report.cash_and_equivalents).to eq(sample_company_data_1[:cash_and_equivalents])
+      expect(report.cash_and_equivalents_date).to eq(sample_company_data_1[:cash_and_equivalents_date])
 
-      expect(report.enterprise_value).to eq(688576691880.0)
-      expect(report.earnings_yield).to eq(0.0354586501226722)
-      expect(report.return_on_capital).to eq(0.129677134951111)
+      expect(report.enterprise_value).to eq(sample_company_data_1[:enterprise_value])
+      expect(report.earnings_yield).to eq(sample_company_data_1[:earnings_yield])
+      expect(report.return_on_capital).to eq(sample_company_data_1[:return_on_capital])
     end
   end
 end

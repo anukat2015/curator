@@ -7,7 +7,7 @@ def sample_company_data_1
     :market_cap_date => "2015-01-28",
     :working_capital => 9792000000.0,
     :working_capital_date => "2014-12-27",
-    :fixed_assets => 12345.0,
+    :fixed_assets => 178490999999.99997,
     :total_assets => 261893999999.99997,
     :total_assets_date => "2014-12-27",
     :current_assets => 83403000000.0,
