@@ -37,6 +37,7 @@ RSpec.describe Accountant do
 
       expect(completed_ey_hash[:enterprise_value]).to eq(ev)
       expect(completed_ey_hash[:earnings_yield]).to eq(ey)
+      expect(completed_roc_hash[:fixed_assets]).to eq(net_fixed_assets)
       expect(completed_roc_hash[:return_on_capital]).to eq(roc)
     end
   end
