@@ -1,11 +1,10 @@
 class HashBuilder
-  # Go through an array of Quandl responses and create a hash of data from them
   def build_hash
     h = {:symbol => ticker}
-    data.each do |key, data_obj|
-      h[key] = data_obj["data"].flatten[1]
+    data.each do |key, response_obj|
+      h[key] = get_value(response_obj)
       date_key = (key.to_s << "_date").to_sym
-      h[date_key] = data_obj["data"].flatten[0]
+      h[date_key] = get_date(response_obj)
     end
     Accountant.new(data: h).calculate_ey_and_roc
   end
@@ -17,5 +16,13 @@ class HashBuilder
   def initialize(ticker:, data:)
     @ticker = ticker
     @data = data
+  end
+
+  def get_value(response_object)
+    response_object["data"].flatten[1]
+  end
+
+  def get_date(response_object)
+    response_object["data"].flatten[0]
   end
 end

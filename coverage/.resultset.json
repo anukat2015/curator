@@ -170,7 +170,6 @@
       ],
       "/Users/Corey/code/applications/curator/app/models/hash_builder.rb": [
         1,
-        null,
         1,
         1,
         1,
@@ -188,6 +187,14 @@
         1,
         1,
         1,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        1,
+        4,
         null,
         null
       ],
@@ -285,6 +292,6 @@
         null
       ]
     },
-    "timestamp": 1423881784
+    "timestamp": 1423882867
   }
 }
