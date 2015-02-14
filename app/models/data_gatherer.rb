@@ -4,11 +4,11 @@ class DataGatherer
 
   private
 
-  def initialize(file:)
-    @file = file
+  def initialize(ticker_file:)
+    @ticker_file = ticker_file
   end
 
-  attr_reader :file
+  attr_reader :ticker_file
 
   def company_data
     @company_data ||= DataFactory.new(
@@ -17,7 +17,7 @@ class DataGatherer
   end
 
   def ticker_array
-    ticker_file = File.open(file, "r")
-    TickerExtractor.new(ticker_file: ticker_file).extract_tickers
+    file = File.open(ticker_file, "r")
+    TickerExtractor.new(ticker_file: file).extract_tickers
   end
 end
