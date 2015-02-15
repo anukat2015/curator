@@ -1,9 +1,7 @@
 require 'rails_helper'
+require 'sample_data'
 
 RSpec.describe DataGatherer do
-  before(:all) do
-    Report.delete_all
-  end
 
   describe '.initialize' do
     it 'accepts a file' do
@@ -12,11 +10,9 @@ RSpec.describe DataGatherer do
   end
 
   describe '#gather_data' do
-    it 'gathers and persists data' do
-      DataGatherer.new(ticker_file: "russell5.txt").gather_data
-      report = Report.first
-      expect(report.symbol).to eq("TESS")
-      expect(report.ebit).to eq(2684100.0)
+    it 'gathers data correctly' do
+      actual = DataGatherer.new(ticker_file: "spec/russell5.txt").gather_data
+      expect(actual).to eq(sample_company_data_array)
     end
   end
 end

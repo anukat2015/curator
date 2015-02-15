@@ -1,5 +1,6 @@
 class DataGatherer
   def gather_data
+    raw_company_data
   end
 
   private
@@ -10,7 +11,7 @@ class DataGatherer
 
   attr_reader :ticker_file
 
-  def company_data
+  def raw_company_data
     DataFactory.new(ticker_array: tickers).make_company_hashes
   end
 

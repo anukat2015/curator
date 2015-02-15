@@ -6,11 +6,11 @@ class Sorter
 
   private
 
-  attr_reader :data, :metric, :num_to_keep
-
   def initialize(data:, metric:, num_to_keep:)
     @data = data
     @metric = metric
     @num_to_keep = num_to_keep
   end
+
+  attr_reader :data, :metric, :num_to_keep
 end
