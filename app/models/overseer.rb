@@ -1,2 +1,2 @@
-class Overseer < ActiveRecord::Base
+class Overseer
 end

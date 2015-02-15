@@ -497,6 +497,10 @@
         null,
         null
       ],
+      "/Users/Corey/code/applications/curator/app/models/overseer.rb": [
+        1,
+        null
+      ],
       "/Users/Corey/code/applications/curator/app/models/report_creator.rb": [
         1,
         1,
@@ -553,6 +557,6 @@
         null
       ]
     },
-    "timestamp": 1423968164
+    "timestamp": 1423971325
   }
 }
