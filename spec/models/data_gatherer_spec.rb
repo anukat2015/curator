@@ -10,6 +10,13 @@ RSpec.describe DataGatherer do
 
   describe '#gather_data' do
     it 'returns correct filtered data' do
+
+      class DataGatherer
+        def raw_company_data
+          sample_company_data_array
+        end
+      end
+
       actual = DataGatherer.new(ticker_file: "spec/russell5.txt").gather_data
       expected = sample_company_data_array[0...-1]
       expect(actual).to eq(expected)
