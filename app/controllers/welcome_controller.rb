@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @ey_reports = CompanyReportByEarningsYield.all
-    @roc_reports = CompanyReportByReturnOnCapital.all
+    @reports = Report.all
   end
 end

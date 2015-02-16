@@ -171,8 +171,7 @@
       "/Users/Corey/code/applications/curator/app/controllers/welcome_controller.rb": [
         1,
         1,
-        4,
-        4,
+        3,
         null,
         null
       ],
@@ -282,14 +281,6 @@
         1,
         1,
         null,
-        null
-      ],
-      "/Users/Corey/code/applications/curator/app/models/company_report_by_earnings_yield.rb": [
-        1,
-        null
-      ],
-      "/Users/Corey/code/applications/curator/app/models/company_report_by_return_on_capital.rb": [
-        1,
         null
       ],
       "/Users/Corey/code/applications/curator/app/models/custodian.rb": [
@@ -577,6 +568,6 @@
         null
       ]
     },
-    "timestamp": 1423974287
+    "timestamp": 1424068167
   }
 }
