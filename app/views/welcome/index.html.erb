@@ -1,0 +1,9 @@
+<table>
+  <% @reports.order(return_on_capital: :desc).limit(20).each do |report| %>
+    <tr>
+      <td><%= report.symbol %></td>
+      <td><%= report.return_on_capital %></td>
+    </tr>
+  <% end %>
+</table>
+

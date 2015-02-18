@@ -28,7 +28,7 @@ RSpec.describe Report, :type => :model do
       enterprise_value: 123456789.101,
       return_on_capital: 0.2,
       earnings_yield: 0.2
-      )
+    )
   end
 
   after(:all) do
