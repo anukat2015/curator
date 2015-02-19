@@ -87,6 +87,9 @@
         null,
         null,
         null,
+        null,
+        null,
+        1,
         null
       ],
       "/Users/Corey/code/applications/curator/config/initializers/backtrace_silencers.rb": [
@@ -569,6 +572,6 @@
         null
       ]
     },
-    "timestamp": 1424230121
+    "timestamp": 1424320665
   }
 }
