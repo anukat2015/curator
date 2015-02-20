@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @reports = Report.all
+    @reports = Report.where(params[:id])
   end
 end
