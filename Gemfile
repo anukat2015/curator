@@ -14,6 +14,7 @@ gem 'spring',        group: :development
 
 gem 'httparty'
 gem 'markdown-rails'
+gem 'haml'
 
 gem 'rake', '~> 10.4.0', group: :test
 gem "codeclimate-test-reporter", group: :test, require: nil

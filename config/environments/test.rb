@@ -37,6 +37,6 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # # Added to resolve capybara/rails issues
+  # Added to resolve capybara/rails issues
   # config.allow_concurrency = false
 end
