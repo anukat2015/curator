@@ -156,7 +156,27 @@ def sample_company_data_array
       :fixed_assets=>1694669000.0,
       :return_on_capital=>0.004298
     },
-    nil
+    {
+      :symbol=>"TTPH",
+      :ebit=>-13977000.0,
+      :ebit_date=>"2014-09-30",
+      :market_cap=>732101864.16,
+      :market_cap_date=>"2014-11-10",
+      :cash_and_equivalents=>56196000.0,
+      :cash_and_equivalents_date=>"2014-09-30",
+      :total_debt=>5905000.0,
+      :total_debt_date=>"2014-09-30",
+      :enterprise_value=>681810864.16,
+      :earnings_yield=>-0.0205,
+      :total_assets=>61087000.0,
+      :total_assets_date=>"2014-09-30",
+      :current_assets=>60465000.0,
+      :current_assets_date=>"2014-09-30",
+      :working_capital=>47295000.0,
+      :working_capital_date=>"2014-09-30",
+      :fixed_assets=>622000.0,
+      :return_on_capital=>-0.291692
+    }
   ]
 end
 

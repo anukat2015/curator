@@ -18,7 +18,7 @@ RSpec.describe DataGatherer do
       end
 
       actual = DataGatherer.new(ticker_file: "spec/russell5.txt").gather_data
-      expected = sample_company_data_array[0...-1]
+      expected = sample_company_data_array
       expect(actual).to eq(expected)
     end
   end
