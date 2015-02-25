@@ -6,6 +6,6 @@ class WelcomeController < ApplicationController
   private
 
   def report_params
-    params.permit(:sort_by, :number)
+    params.permit(:sort_by => nil, :number => nil)
   end
 end

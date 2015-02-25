@@ -1,5 +1,15 @@
+%h1 Curator
 %table
+  %thead
+    %tr
+      %td
+        %h5 Symbol
+      %td
+        %h5 Return on Capital
+      %td
+        %h5 Earnings Yield
   - @reports.each do |report|
     %tr
       %td= report.symbol
       %td= report.return_on_capital
+      %td= report.earnings_yield
