@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
   def index
     @reports = Report.select(:symbol, :return_on_capital, :earnings_yield)
-                       .order(report_params[:sort_by] => :desc)
+                     .order(report_params[:sort_by] => :desc)
+                     .limit(report_params[:limit].to_i)
   end
 
   private

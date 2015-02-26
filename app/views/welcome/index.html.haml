@@ -1,12 +1,18 @@
 !!!
 %h1 Curator
 %div
-  %form{id: "sort_form", action: "/", method: "GET"}
+  %form{id: "sort_limit_form", action: "/", method: "GET"}
     Sort by:
     %select{name: "sort_by"}
-      %option Select attribute
+      %option{value: "symbol"} Select attribute
       %option{value: "return_on_capital"} Return on Capital
       %option{value: "earnings_yield"} Earnings Yield
+    Limit:
+    %select{name: "limit"}
+      %option{value: nil} None
+      %option{value: 10} 10
+      %option{value: 50} 50
+      %option{value: 100} 100
     %input{type: "submit", value: " Go "}
 %p= @message
 %table
