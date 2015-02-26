@@ -1,4 +1,14 @@
+!!!
 %h1 Curator
+%div
+  %form{id: "sort_form", action: "/", method: "GET"}
+    Sort by:
+    %select{name: "sort_by"}
+      %option Select attribute
+      %option{value: "return_on_capital"} Return on Capital
+      %option{value: "earnings_yield"} Earnings Yield
+    %input{type: "submit", value: " Go "}
+%p= @message
 %table
   %thead
     %tr
