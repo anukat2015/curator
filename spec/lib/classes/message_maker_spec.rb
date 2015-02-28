@@ -42,6 +42,5 @@ RSpec.describe MessageMaker do
 
       expect(msg).to eq("Sorting by nothing\nLimit: None")
     end
-
   end
 end
