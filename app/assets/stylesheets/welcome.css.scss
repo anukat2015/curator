@@ -1,3 +1,27 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  font-family: monospace;
+}
+
+thead td {
+  border: none;
+  text-align: left;
+  font-size: 20px;
+  border: 1px solid #eee;
+}
+
+td {
+  border: 1px solid #eee;
+  font-size: 16px;
+}
+
+form {
+  display: inline;
+}
+
+input {
+  margin-left: 10px;
+}
+
+.pusher {
+  margin-bottom: 100%;
+}

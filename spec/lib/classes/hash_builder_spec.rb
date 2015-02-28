@@ -19,7 +19,7 @@ RSpec.describe HashBuilder do
                       ebit_date: ey_data[:ebit]["data"].flatten[0],
       }
       test_hash[:enterprise_value] = (test_hash[:market_cap] + test_hash[:total_debt]) - test_hash[:cash_and_equivalents]
-      test_hash[:earnings_yield] = test_hash[:ebit] / test_hash[:enterprise_value]
+      test_hash[:earnings_yield] = (test_hash[:ebit] / test_hash[:enterprise_value]).round(6)
       expect(actual).to eq(test_hash)
     end
   end
