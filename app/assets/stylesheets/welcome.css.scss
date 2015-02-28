@@ -1,10 +1,17 @@
+* {
+  font-family: monospace;
+}
+
 thead td {
   border: none;
   text-align: left;
+  font-size: 20px;
+  border: 1px solid #eee;
 }
 
 td {
-  border-bottom: 1px solid #eee;
+  border: 1px solid #eee;
+  font-size: 16px;
 }
 
 form {
@@ -13,4 +20,8 @@ form {
 
 input {
   margin-left: 10px;
+}
+
+.pusher {
+  margin-bottom: 100%;
 }

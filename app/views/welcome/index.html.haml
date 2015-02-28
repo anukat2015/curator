@@ -9,23 +9,34 @@
       %option{value: "earnings_yield"} Earnings Yield
     Limit:
     %select{name: "limit"}
-      %option{value: nil} None
+      %option{value: 2000} None
       %option{value: 10} 10
       %option{value: 50} 50
       %option{value: 100} 100
     %input{type: "submit", value: " Go "}
-%p= @message
+%pre= @message
 %table
   %thead
     %tr
+      %td
+        %h5 #
       %td
         %h5 Symbol
       %td
         %h5 Return on Capital
       %td
         %h5 Earnings Yield
-  - @reports.each do |report|
-    %tr
-      %td= report.symbol
-      %td= report.return_on_capital
-      %td= report.earnings_yield
+  -if @reports
+    -n = 0
+    -@reports.each do |report|
+      -n += 1
+      %tr
+        %td= n
+        %td= report.symbol
+        %td= report.return_on_capital
+        %td= report.earnings_yield
+.pusher
+%p
+  Created by
+  %a{href: "http://www.leveen.co/about", target: "_blank"} Corey Leveen
+  \- All data retrieved using the Quandl Sharadar Fundamentals API
