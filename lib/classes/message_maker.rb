@@ -11,7 +11,7 @@ class MessageMaker
       message_obj << "nothing"
     end
 
-    if limit == "2000"
+    if limit == "3000" || limit.nil?
       message_obj << "\nLimit: None"
     else
       message_obj << "\nLimit: #{limit}"
