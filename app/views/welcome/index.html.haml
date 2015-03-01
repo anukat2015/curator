@@ -28,6 +28,22 @@
         %h5 Earnings Yield
       %td
         %h5 Enterprise Value
+      %td
+        %h5 EBIT
+      %td
+        %h5 Market Cap
+      %td
+        %h5 Working Capital
+      %td
+        %h5 Fixed Assets
+      %td
+        %h5 Total Assets
+      %td
+        %h5 Current Assets
+      %td
+        %h5 Total Debt
+      %td
+        %h5 Cash and Equivalents
   -if @reports
     -n = 0
     -@reports.each do |report|
@@ -37,7 +53,15 @@
         %td= report.symbol
         %td= number_to_percentage(report.return_on_capital * 100, precision: 3)
         %td= number_to_percentage(report.earnings_yield * 100, precision: 3)
-        %td= report.enterprise_value
+        %td= number_to_currency(report.enterprise_value, precision: 0)
+        %td= number_to_currency(report.ebit, precision: 0)
+        %td= number_to_human(report.market_cap)
+        %td= number_to_currency(report.working_capital, precision: 0)
+        %td= number_to_currency(report.fixed_assets, precision: 0)
+        %td= number_to_currency(report.total_assets, precision: 0)
+        %td= number_to_currency(report.current_assets, precision: 0)
+        %td= number_to_currency(report.total_debt, precision: 0)
+        %td= number_to_currency(report.cash_and_equivalents, precision: 0)
 .pusher
 %p
   Created by

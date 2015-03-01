@@ -21,7 +21,6 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
-  gem 'capybara'
   gem 'pry'
   gem 'pry-nav'
 end

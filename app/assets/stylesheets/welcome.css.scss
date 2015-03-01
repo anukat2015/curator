@@ -2,6 +2,10 @@
   font-family: monospace;
 }
 
+table {
+  table-layout: fixed;
+}
+
 thead td {
   border: none;
   text-align: left;
@@ -12,6 +16,7 @@ thead td {
 td {
   border: 1px solid #eee;
   font-size: 16px;
+  white-space: nowrap;
 }
 
 form {
@@ -23,5 +28,5 @@ input {
 }
 
 .pusher {
-  margin-bottom: 100%;
+  margin-bottom: 20px;
 }
