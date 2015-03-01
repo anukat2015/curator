@@ -36,7 +36,9 @@ RSpec.describe WelcomeController, :type => :controller do
 
       get :index, :sort_by => "return_on_capital", :limit => "1"
 
-      expect(assigns(:reports).first.attributes).to eq(report2.first.attributes)
+      expect(assigns(:reports).first[:symbol]).to eq(report2.first.symbol)
+      expect(assigns(:reports).first[:return_on_capital]).to eq(report2.first.return_on_capital)
+      expect(assigns(:reports).first[:earnings_yield]).to eq(report2.first.earnings_yield)
     end
   end
 end

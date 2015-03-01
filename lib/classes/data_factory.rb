@@ -5,8 +5,11 @@ class DataFactory
       roc = DataWorker.new(ticker: ticker, type: :roc).get_ey_and_roc
       warn "Earnings Yield retrieval for #{ticker} has failed." unless ey
       warn "Return on Capital retrieval for #{ticker} has failed." unless roc
-      puts "Done with #{ticker} No. #{ticker_array.index(ticker) + 1}" if ey && roc
-      ey.merge(roc) if ey && roc
+
+      if ey && roc
+        puts "Done with #{ticker} No. #{ticker_array.index(ticker) + 1}"
+        ey.merge(roc)
+      end
     end
   end
 
