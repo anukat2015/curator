@@ -26,6 +26,8 @@
         %h5 Return on Capital
       %td
         %h5 Earnings Yield
+      %td
+        %h5 Enterprise Value
   -if @reports
     -n = 0
     -@reports.each do |report|
@@ -33,8 +35,9 @@
       %tr
         %td= n
         %td= report.symbol
-        %td= report.return_on_capital
-        %td= report.earnings_yield
+        %td= number_to_percentage(report.return_on_capital * 100, precision: 3)
+        %td= number_to_percentage(report.earnings_yield * 100, precision: 3)
+        %td= report.enterprise_value
 .pusher
 %p
   Created by
