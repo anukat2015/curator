@@ -242,20 +242,6 @@
         null,
         null
       ],
-      "/Users/Corey/code/applications/curator/lib/classes/custodian.rb": [
-        1,
-        1,
-        null,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        0,
-        null,
-        null
-      ],
       "/Users/Corey/code/applications/curator/lib/classes/data_factory.rb": [
         1,
         1,
@@ -617,6 +603,6 @@
         null
       ]
     },
-    "timestamp": 1425955413
+    "timestamp": 1426114273
   }
 }
