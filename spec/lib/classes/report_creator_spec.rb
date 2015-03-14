@@ -16,34 +16,10 @@ RSpec.describe ReportCreator do
     it 'stores persists data correctly' do
       report = Report.first
 
-      expect(report.symbol).to eq(sample_company_data_1[:symbol])
-
-      expect(report.ebit).to eq(sample_company_data_1[:ebit])
-      expect(report.ebit_date).to eq(sample_company_data_1[:ebit_date])
-
-      expect(report.market_cap).to eq(sample_company_data_1[:market_cap])
-      expect(report.market_cap_date).to eq(sample_company_data_1[:market_cap_date])
-
-      expect(report.working_capital).to eq(sample_company_data_1[:working_capital])
-      expect(report.working_capital_date).to eq(sample_company_data_1[:working_capital_date])
-
-      expect(report.fixed_assets).to eq(sample_company_data_1[:fixed_assets])
-
-      expect(report.total_assets).to eq(sample_company_data_1[:total_assets])
-      expect(report.total_assets_date).to eq(sample_company_data_1[:total_assets_date])
-
-      expect(report.current_assets).to eq(sample_company_data_1[:current_assets])
-      expect(report.current_assets_date).to eq(sample_company_data_1[:current_assets_date])
-
-      expect(report.total_debt).to eq(sample_company_data_1[:total_debt])
-      expect(report.total_debt_date).to eq(sample_company_data_1[:total_debt_date])
-
-      expect(report.cash_and_equivalents).to eq(sample_company_data_1[:cash_and_equivalents])
-      expect(report.cash_and_equivalents_date).to eq(sample_company_data_1[:cash_and_equivalents_date])
-
-      expect(report.enterprise_value).to eq(sample_company_data_1[:enterprise_value])
-      expect(report.earnings_yield).to eq(sample_company_data_1[:earnings_yield])
-      expect(report.return_on_capital).to eq(sample_company_data_1[:return_on_capital])
+      report.attributes.each do |attr_name, attr_value|
+        next if ['id', 'created_at', 'updated_at'].include? attr_name
+        expect(report[attr_name.to_sym]).to eq(sample_company_data_1[attr_name.to_sym])
+      end
     end
   end
 end
