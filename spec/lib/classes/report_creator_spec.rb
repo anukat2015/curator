@@ -28,7 +28,10 @@ RSpec.describe ReportCreator do
 
     it 'updates existing records' do
       ReportCreator.new(data: [sample_company_data_4]).create_company_reports
-      report = Report.where(symbol: "TSRA").first
+      tsra_list = Report.where(symbol: "TSRA")
+      expect(tsra_list.count).to eq(1)
+
+      report = tsra_list.first
       expect(report.ebit).to eq(sample_company_data_4[:ebit])
       expect(report.market_cap).to eq(sample_company_data_4[:market_cap])
       expect(report.earnings_yield).to eq(sample_company_data_4[:earnings_yield])
