@@ -21,9 +21,17 @@ RSpec.describe ReportCreator do
       end
     end
 
-    it 'does not create duplicate reports' do
+    it 'avoids creating duplicate reports' do
       2.times { ReportCreator.new(data: sample_company_data_array).create_company_reports }
       expect(Report.all.count).to eq(sample_company_data_array.length + 1)
+    end
+
+    it 'updates existing records' do
+      ReportCreator.new(data: [sample_company_data_4]).create_company_reports
+      report = Report.where(symbol: "TSRA").first
+      expect(report.ebit).to eq(sample_company_data_4[:ebit])
+      expect(report.market_cap).to eq(sample_company_data_4[:market_cap])
+      expect(report.earnings_yield).to eq(sample_company_data_4[:earnings_yield])
     end
   end
 end

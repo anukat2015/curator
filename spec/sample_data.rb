@@ -70,6 +70,30 @@ def sample_company_data_3
   }
 end
 
+def sample_company_data_4
+  {
+    :symbol => "TSRA",
+    :ebit => 990,
+    :ebit_date => "2014-09-30",
+    :market_cap => 1200,
+    :market_cap_date => "2014-11-04",
+    :working_capital => 390891000,
+    :working_capital_date => "2014-09-30",
+    :fixed_assets => 123456789,
+    :total_assets => 556523000,
+    :total_assets_date => "2014-09-30",
+    :current_assets => 430812000,
+    :current_assets_date => "2014-09-30",
+    :total_debt => 0,
+    :total_debt_date => "2014-09-30",
+    :cash_and_equivalents => 47338000,
+    :cash_and_equivalents_date => "2014-09-30",
+    :enterprise_value => 1538937097,
+    :earnings_yield => 0.01,
+    :return_on_capital => 0.288525789679482
+  }
+end
+
 def sample_company_data_array
   [
     {
