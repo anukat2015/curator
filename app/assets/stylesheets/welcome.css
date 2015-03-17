@@ -1,0 +1,32 @@
+* {
+  font-family: monospace;
+}
+
+table {
+  table-layout: fixed;
+}
+
+thead td {
+  border: none;
+  text-align: left;
+  font-size: 20px;
+  border: 1px solid #eee;
+}
+
+td {
+  border: 1px solid #eee;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+form {
+  display: inline;
+}
+
+input {
+  margin-left: 10px;
+}
+
+.pusher {
+  margin-bottom: 20px;
+}

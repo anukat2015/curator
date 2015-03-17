@@ -1,0 +1,55 @@
+/* line 1, /Users/Corey/code/applications/curator/app/assets/stylesheets/welcome.css.scss */
+* {
+  font-family: monospace;
+}
+
+/* line 5, /Users/Corey/code/applications/curator/app/assets/stylesheets/welcome.css.scss */
+table {
+  table-layout: fixed;
+}
+
+/* line 9, /Users/Corey/code/applications/curator/app/assets/stylesheets/welcome.css.scss */
+thead td {
+  border: none;
+  text-align: left;
+  font-size: 20px;
+  border: 1px solid #eee;
+}
+
+/* line 16, /Users/Corey/code/applications/curator/app/assets/stylesheets/welcome.css.scss */
+td {
+  border: 1px solid #eee;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* line 22, /Users/Corey/code/applications/curator/app/assets/stylesheets/welcome.css.scss */
+form {
+  display: inline;
+}
+
+/* line 26, /Users/Corey/code/applications/curator/app/assets/stylesheets/welcome.css.scss */
+input {
+  margin-left: 10px;
+}
+
+/* line 30, /Users/Corey/code/applications/curator/app/assets/stylesheets/welcome.css.scss */
+.pusher {
+  margin-bottom: 20px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
