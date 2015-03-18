@@ -1,6 +1,5 @@
 class ErrorChecker
   def check_for_errors
-    warn_if_error
     warn_if_errors
     warn_if_response_is_not_a_hash
     slow_down if requesting_too_fast?
@@ -16,15 +15,11 @@ class ErrorChecker
     @timeout = timeout
   end
 
-  def warn_if_error
-    if response['error'] && !response['error'].empty?
-      warn "#{ticker} ----- " + response['error']
-    end
-  end
-
   def warn_if_errors
-    if response['errors'] && !response['errors'].empty?
-      warn "#{ticker} ----- " + response['errors']
+    if response['error'] && !response['error'].empty?
+      warn "#{ticker} ----- " << response['error']
+    elsif response['errors'] && !response['errors'].empty?
+      warn "#{ticker} ----- " << response['errors']
     end
   end
 
