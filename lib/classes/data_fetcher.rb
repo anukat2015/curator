@@ -3,7 +3,7 @@ class DataFetcher
     data_responses = {}
     query_hash.each do |metric, quandl_query|
       data_responses[metric] = HTTParty.get(BASE_URL + "#{ticker}_#{quandl_query}.json?rows=1&auth_token=#{ENV['QUANDL_AUTH_TOKEN']}")
-      ErrorChecker.new(response: data_responses[metric], ticker: ticker, timeout: 30).check_for_errors
+      ErrorChecker.new(response: data_responses[metric], ticker: ticker, timeout: 60).check_for_errors
     end
     data_responses
   end

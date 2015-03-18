@@ -162,6 +162,8 @@
       "/Users/Corey/code/applications/curator/config/routes.rb": [
         1,
         1,
+        null,
+        1,
         null
       ],
       "/Users/Corey/code/applications/curator/app/helpers/application_helper.rb": [
@@ -605,6 +607,6 @@
         null
       ]
     },
-    "timestamp": 1426559247
+    "timestamp": 1426648834
   }
 }
