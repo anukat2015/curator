@@ -1,6 +1,6 @@
 !!!
 %h1 Curator
-%p= "Data current as of " << @last_updated
+%p= "Data current as of #{@last_updated}"
 %div
   %form{id: "sort_limit_form", action: "/", method: "GET"}
     Sort by:
@@ -53,16 +53,16 @@
         %td= n
         %td= report.symbol
         %td= number_to_percentage(report.return_on_capital * 100, precision: 3)
-        %td= number_to_percentage(report.earnings_yield * 100, precision: 3)
-        %td= number_to_currency(report.enterprise_value, precision: 0)
-        %td= number_to_currency(report.ebit, precision: 0)
+        %td= number_to_percentage(report.earnings_yield * 100,    precision: 3)
+        %td= number_to_currency(report.enterprise_value,          precision: 0)
+        %td= number_to_currency(report.ebit,                      precision: 0)
         %td= number_to_human(report.market_cap)
-        %td= number_to_currency(report.working_capital, precision: 0)
-        %td= number_to_currency(report.fixed_assets, precision: 0)
-        %td= number_to_currency(report.total_assets, precision: 0)
-        %td= number_to_currency(report.current_assets, precision: 0)
-        %td= number_to_currency(report.total_debt, precision: 0)
-        %td= number_to_currency(report.cash_and_equivalents, precision: 0)
+        %td= number_to_currency(report.working_capital,           precision: 0)
+        %td= number_to_currency(report.fixed_assets,              precision: 0)
+        %td= number_to_currency(report.total_assets,              precision: 0)
+        %td= number_to_currency(report.current_assets,            precision: 0)
+        %td= number_to_currency(report.total_debt,                precision: 0)
+        %td= number_to_currency(report.cash_and_equivalents,      precision: 0)
 .pusher
 %p
   Created by
