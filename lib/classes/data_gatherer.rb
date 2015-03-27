@@ -1,6 +1,6 @@
 class DataGatherer
   def gather_data
-    filtered_data
+    filter_data
   end
 
   private
@@ -11,7 +11,7 @@ class DataGatherer
 
   attr_reader :ticker_file
 
-  def filtered_data
+  def filter_data
     raw_company_data.keep_if do |obj|
       (obj.is_a? Hash) &&
       (obj[:return_on_capital].is_a? Float) &&
