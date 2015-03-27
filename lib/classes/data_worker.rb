@@ -29,11 +29,21 @@ class DataWorker
   end
 
   def earnings_yield_query_hash
-    {:ebit => "EBIT_MRQ", :market_cap => "MARKETCAP", :cash_and_equivalents => "CASHNEQ_MRQ", :total_debt => "DEBT_MRQ"}
+    {
+      :ebit => "EBIT_MRQ",
+      :market_cap => "MARKETCAP",
+      :cash_and_equivalents => "CASHNEQ_MRQ",
+      :total_debt => "DEBT_MRQ"
+    }
   end
 
   def return_on_capital_query_hash
-    {:ebit => "EBIT_MRQ", :total_assets => "ASSETS_MRQ", :current_assets => "ASSETSC_MRQ", :working_capital => "WORKINGCAPITAL_MRQ"}
+    {
+      :ebit => "EBIT_MRQ",
+      :total_assets => "ASSETS_MRQ",
+      :current_assets => "ASSETSC_MRQ",
+      :working_capital => "WORKINGCAPITAL_MRQ"
+    }
   end
 
   def retrieve_data

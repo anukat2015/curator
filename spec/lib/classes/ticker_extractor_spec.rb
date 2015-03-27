@@ -26,6 +26,7 @@ RSpec.describe TickerExtractor do
                   "ANF",
                   "ABMD"
                  ]
+
       expect(extractor.extract_tickers).to eq(expected)
     end
   end
