@@ -12,10 +12,10 @@ class Clerk
 
   private
 
-  attr_reader :data, :file_name
+  attr_reader :params, :file_name
 
-  def initialize(data:, file_name:)
-    @data = data
+  def initialize(params:, file_name:)
+    @params = params
     @file_name = file_name
   end
 end
