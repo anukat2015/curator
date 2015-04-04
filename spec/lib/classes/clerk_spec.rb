@@ -13,5 +13,9 @@ RSpec.describe Clerk do
     after(:all) do
       File.delete("company_report.csv")
     end
+
+    it 'creates CSVs based on passed parameters' do
+
+    end
   end
 end
