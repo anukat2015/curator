@@ -4,13 +4,17 @@ class WelcomeController < ApplicationController
       @reports = Report.order(report_params[:sort_by] => :desc)
                        .limit(report_params[:limit].to_i)
       @message = MessageMaker.new(report_params).make_message
+      @download_link = "<a href='/download'>Download CSV</a>"
+      session[:report_params] = report_params
     end
     @last_updated = Report.maximum("updated_at").to_date.to_s
   end
 
   def download_csv
     generate_csv
-    send_file csv_filename
+    send_data File.read(csv_filename),
+              filename: csv_filename.split("/").last,
+              type: "csv"
     delete_csv
   end
 
@@ -18,6 +22,10 @@ class WelcomeController < ApplicationController
 
   def report_params
     params.permit(:sort_by, :limit)
+  end
+
+  def saved_params
+    session[:report_params]
   end
 
   def generate_csv
@@ -38,14 +46,14 @@ class WelcomeController < ApplicationController
     ]
 
     Clerk.new(
-      params: report_params,
+      params: saved_params,
       attributes: attrs,
       file_name: csv_filename
-    )
+    ).create_csv
   end
 
   def csv_filename
-    "#{Rails.root}/public/Curator Output #{Time.now.to_s.split.first}"
+    "#{Rails.root}/public/Curator Output #{Time.now.to_s.split.first}.csv"
   end
 
   def delete_csv

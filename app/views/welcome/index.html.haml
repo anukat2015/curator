@@ -16,6 +16,7 @@
       %option{value: 3000} No limit
     %input{type: "submit", value: " Go "}
 %pre= @message
+%pre= @download_link.html_safe if @download_link
 %table
   %thead
     %tr
