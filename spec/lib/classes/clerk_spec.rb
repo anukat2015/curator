@@ -13,7 +13,7 @@ RSpec.describe Clerk do
         "limit" => "2"
       }
 
-      Clerk.new(params: report_params, attributes: [], file_name: "company_report").create_csv
+      Clerk.new(params: report_params, attributes: [], file_name: "company_report.csv").create_csv
       expect(File.file?("company_report.csv")).to be true
     end
 
@@ -31,7 +31,7 @@ RSpec.describe Clerk do
       Clerk.new(
         params: report_params,
         attributes: attributes,
-        file_name: "download"
+        file_name: "download.csv"
       ).create_csv
 
       expected = [
