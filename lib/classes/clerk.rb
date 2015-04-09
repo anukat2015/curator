@@ -6,6 +6,7 @@ class Clerk
   def create_csv
     CSV.open(file_name, "wb") do |csv|
       csv << attrs.map { |attr| attr.to_s.capitalize.gsub("_", " ") }
+
       reports.each do |report|
         report_info = []
         attrs.each do |attr|
