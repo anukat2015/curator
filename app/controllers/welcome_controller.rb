@@ -57,6 +57,6 @@ class WelcomeController < ApplicationController
   end
 
   def delete_csv
-    File.delete(csv_filename)
+    File.delete(csv_filename) if File.file?(csv_filename)
   end
 end

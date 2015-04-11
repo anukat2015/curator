@@ -43,12 +43,21 @@ RSpec.describe WelcomeController, :type => :controller do
   end
 
   describe '#download_csv' do
-    it 'responds successfully' do
+    before(:each) do
       params = {"sort_by" => "return_on_capital", "limit" => "10"}
       session[:report_params] = params
+    end
+
+    it 'responds successfully' do
       get :download_csv
       expect(response).to be_success
       expect(response).to have_http_status(200)
+    end
+
+    it 'removes generated csv files' do
+      get :download_csv
+      filename = WelcomeController.new.send(:csv_filename)
+      expect(File.file?(filename)).to be false
     end
   end
 end
