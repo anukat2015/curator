@@ -2,6 +2,7 @@ class Overseer
   def retrieve_and_persist_data
     get_company_data
     persist_company_data
+    add_company_names
   end
 
   private
@@ -18,5 +19,9 @@ class Overseer
 
   def persist_company_data
     ReportCreator.new(data: company_data).create_company_reports
+  end
+
+  def add_company_names
+    NameFinder.new(file: ticker_file)
   end
 end
