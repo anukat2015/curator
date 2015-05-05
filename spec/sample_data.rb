@@ -1,10 +1,10 @@
 def sample_company_data_1
   {
     :symbol => "AAPL",
-    :ebit => 24416000000.0,
-    :ebit_date => "2014-12-27",
-    :market_cap => 671651691880.0,
-    :market_cap_date => "2015-01-28",
+    :ebit => 18564000000.0,
+    :ebit_date => "2015-03-28",
+    :market_cap => 752160076800.0,
+    :market_cap_date => "2015-04-28",
     :working_capital => 9792000000.0,
     :working_capital_date => "2014-12-27",
     :fixed_assets => 178491000000.0,
@@ -12,12 +12,12 @@ def sample_company_data_1
     :total_assets_date => "2014-12-27",
     :current_assets => 83403000000.0,
     :current_assets_date => "2014-12-27",
-    :total_debt => 36403000000.0,
-    :total_debt_date => "2014-12-27",
-    :cash_and_equivalents => 19478000000.0,
-    :cash_and_equivalents_date => "2014-12-27",
-    :enterprise_value => 688576691880.0,
-    :earnings_yield => 0.035459,
+    :total_debt => 43871000000.0,
+    :total_debt_date => "2015-03-28",
+    :cash_and_equivalents => 14489000000.0,
+    :cash_and_equivalents_date => "2015-03-28",
+    :enterprise_value => 781542076800.0,
+    :earnings_yield => 0.023753,
     :return_on_capital => 0.129677
   }
 end
@@ -207,16 +207,16 @@ end
 def earnings_yield_data_1
   {
                      :symbol => "AAPL",
-                 :total_debt => 36403000000.0,
-            :total_debt_date => "2014-12-27",
-                 :market_cap => 671651691880.0,
-            :market_cap_date => "2015-01-28",
-       :cash_and_equivalents => 19478000000.0,
-  :cash_and_equivalents_date => "2014-12-27",
-                       :ebit => 24416000000.0,
-                  :ebit_date => "2014-12-27",
-           :enterprise_value => 688576691880.0,
-             :earnings_yield => 0.035459
+                 :total_debt => 43871000000.0,
+            :total_debt_date => "2015-03-28",
+                 :market_cap => 752160076800.0,
+            :market_cap_date => "2015-04-28",
+       :cash_and_equivalents => 14489000000.0,
+  :cash_and_equivalents_date => "2015-03-28",
+                       :ebit => 18564000000.0,
+                  :ebit_date => "2015-03-28",
+           :enterprise_value => 781542076800.0,
+             :earnings_yield => 0.023753
   }
 end
 
@@ -239,16 +239,16 @@ end
 def return_on_capital_data_1
   {
                 :symbol => "AAPL",
-                  :ebit => 24416000000.0,
-             :ebit_date => "2014-12-27",
-          :total_assets => 261894000000.0,
-     :total_assets_date => "2014-12-27",
-        :current_assets => 83403000000.0,
-   :current_assets_date => "2014-12-27",
-       :working_capital => 9792000000.0,
-  :working_capital_date => "2014-12-27",
-          :fixed_assets => 178491000000.0,
-     :return_on_capital => 0.129677
+                  :ebit => 18564000000.0,
+             :ebit_date => "2015-03-28",
+          :total_assets => 261194000000.0,
+     :total_assets_date => "2015-03-28",
+        :current_assets => 67891000000.0,
+   :current_assets_date => "2015-03-28",
+       :working_capital => 9162000000.0,
+  :working_capital_date => "2015-03-28",
+          :fixed_assets => 193303000000.0,
+     :return_on_capital => 0.09169
   }
 end
 
