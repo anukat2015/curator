@@ -24,13 +24,13 @@ class Clerk
 
   private
 
-  attr_reader :params, :attrs, :file_name
-
   def initialize(params:, attributes:, file_name:)
     @params = params
     @attrs = attributes
     @file_name = file_name
   end
+
+  attr_reader :params, :attrs, :file_name
 
   def reports
     Report.order(params["sort_by"].intern => :desc).limit(params["limit"].to_i)
