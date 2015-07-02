@@ -5,9 +5,9 @@ class TickerExtractor
 
   private
 
-  attr_reader :ticker_file
-
   def initialize(ticker_file:)
     @ticker_file = ticker_file
   end
+
+  attr_reader :ticker_file
 end

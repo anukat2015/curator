@@ -7,13 +7,13 @@ class ErrorChecker
 
   private
 
-  attr_reader :response, :ticker, :timeout
-
   def initialize(response:, ticker:, timeout:)
     @response = response
     @ticker = ticker
     @timeout = timeout
   end
+
+  attr_reader :response, :ticker, :timeout
 
   def warn_if_errors
     if response['error'] && !response['error'].empty?
