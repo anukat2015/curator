@@ -297,12 +297,12 @@
         1,
         null,
         1,
+        4,
+        4,
+        4,
+        null,
         null,
         1,
-        4,
-        4,
-        4,
-        null,
         null,
         1,
         4,
@@ -525,12 +525,12 @@
         1,
         null,
         1,
+        76,
+        76,
+        76,
+        null,
         null,
         1,
-        76,
-        76,
-        76,
-        null,
         null,
         1,
         76,
@@ -706,10 +706,10 @@
         1,
         null,
         1,
-        null,
-        1,
         2,
         null,
+        null,
+        1,
         null
       ],
       "/Users/Corey/code/applications/curator/app/mailers/company_report_mailer.rb": [
@@ -726,6 +726,6 @@
         null
       ]
     },
-    "timestamp": 1430797747
+    "timestamp": 1445703627
   }
 }
