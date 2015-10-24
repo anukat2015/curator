@@ -12,7 +12,7 @@ RSpec.describe Overseer do
 
       expect(Report.all.count).to eq(5)
       expect(report.symbol).to eq("TESS")
-      expect(report.ebit).to eq(2684100.0)
+      expect(report.ebit).to eq(2859500.0)
     end
   end
 end
