@@ -19,7 +19,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.3'
   gem 'pry'
   gem 'irbtools', require: 'irbtools/binding'
   gem 'pry-nav'

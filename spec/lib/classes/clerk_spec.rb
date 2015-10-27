@@ -14,7 +14,7 @@ RSpec.describe Clerk do
       }
 
       Clerk.new(params: report_params, attributes: [], file_name: "company_report.csv").create_csv
-      expect(File.file?("company_report.csv")).to be true
+      expect(File.file?("company_report.csv")).to be(true)
     end
 
     it 'creates CSVs based on passed parameters' do
