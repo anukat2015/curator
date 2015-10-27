@@ -51,7 +51,7 @@ class Clerk
     when :ebit
       container << number_to_currency(report.ebit,                      precision: 0)
     when :market_cap
-      container << number_to_human(report.market_cap)
+      container << number_to_currency(report.market_cap,                precision: 0)
     when :working_capital
       container << number_to_currency(report.working_capital,           precision: 0)
     when :fixed_assets
