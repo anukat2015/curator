@@ -26,4 +26,3 @@ group :development, :test do
 end
 
 gem 'rake', '~> 10.4.0', group: :test
-gem 'codeclimate-test-reporter', group: :test, require: nil
