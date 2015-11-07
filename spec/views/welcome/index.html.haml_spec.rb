@@ -12,6 +12,7 @@ RSpec.describe "welcome/index", :type => :view  do
         :return_on_capital => 0.1,
         :earnings_yield => 0.2))
     ])
+    assign(:last_updated, Date.today)
 
     render
 
