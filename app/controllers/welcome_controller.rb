@@ -1,8 +1,7 @@
 class WelcomeController < ApplicationController
   def index
-    if !report_params.blank?
-      @reports = Report.order(report_params[:sort_by] => :desc)
-                       .limit(report_params[:limit].to_i)
+    unless report_params.blank?
+      @reports = report_list(report_params[:sort_by], report_params[:limit])
       @message = MessageMaker.new(report_params).make_message
       @download_link = "<a href='/download'>Download CSV</a>"
       session[:report_params] = report_params
@@ -20,6 +19,14 @@ class WelcomeController < ApplicationController
 
   private
 
+  def report_list(sort_by, limit)
+    if sort_by == "magic_rank"
+      Report.order(sort_by).limit(limit.to_i)
+    else
+      Report.order(sort_by => :desc).limit(limit.to_i)
+    end
+  end
+
   def report_params
     params.permit(:sort_by, :limit)
   end
@@ -32,6 +39,10 @@ class WelcomeController < ApplicationController
     attrs = %i(
       symbol
       name
+      magic_rank
+      magic_number
+      quality_rank
+      value_rank
       return_on_capital
       earnings_yield
       enterprise_value

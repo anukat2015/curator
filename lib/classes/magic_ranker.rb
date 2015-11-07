@@ -1,10 +1,12 @@
 class MagicRanker
   class << self
     def rank_reports
+      puts "Ranking #{Report.count} reports"
       assign_quality_rank
       assign_value_rank
       assign_magic_number
       assign_magic_rank
+      puts "Done"
     end
 
     private

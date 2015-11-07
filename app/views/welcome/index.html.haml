@@ -8,7 +8,7 @@
       %option{value: "symbol"} Select attribute
       %option{value: "return_on_capital"} Return on Capital
       %option{value: "earnings_yield"} Earnings Yield
-      %option{value: "magic_number"} Magic Number
+      %option{value: "magic_rank"} Magic Rank
     Limit:
     %select{name: "limit"}
       %option{value: 10} 10
@@ -27,6 +27,14 @@
         %h5 Symbol
       %td
         %h5 Name
+      %td
+        %h5 Magic Rank
+      %td
+        %h5 Magic Number
+      %td
+        %h5 Quality Rank
+      %td
+        %h5 Value Rank
       %td
         %h5 Return on Capital
       %td
@@ -50,13 +58,15 @@
       %td
         %h5 Cash and Equivalents
   -if @reports
-    -n = 0
-    -@reports.each do |report|
-      -n += 1
+    -@reports.each_with_index do |report, i|
       %tr
-        %td= n
+        %td= i + 1
         %td= report.symbol
         %td= report.name
+        %td= report.magic_rank
+        %td= report.magic_number
+        %td= report.quality_rank
+        %td= report.value_rank
         %td= number_to_percentage(report.return_on_capital * 100, precision: 3)
         %td= number_to_percentage(report.earnings_yield * 100,    precision: 3)
         %td= number_to_currency(report.enterprise_value,          precision: 0)
@@ -71,5 +81,5 @@
 .pusher
 %p
   Created by
-  %a{href: "http://www.leveen.co/about", target: "_blank"} Corey Leveen
+  %a{href: "http://www.leveen.co/about", target: :blank} Corey Leveen
   \- All data retrieved using the Quandl Sharadar Fundamentals API

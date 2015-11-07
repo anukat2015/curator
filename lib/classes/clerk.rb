@@ -33,15 +33,15 @@ class Clerk
   attr_reader :params, :attrs, :file_name
 
   def reports
-    Report.order(params["sort_by"].intern => :desc).limit(params["limit"].to_i)
+    if params["sort_by"] == "magic_rank"
+      Report.order(params["sort_by"].intern).limit(params["limit"].to_i)
+    else
+      Report.order(params["sort_by"].intern => :desc).limit(params["limit"].to_i)
+    end
   end
 
   def format_values(report:, attribute:, container:)
     case attribute
-    when :symbol
-      container << report.symbol
-    when :name
-      container << report.name
     when :return_on_capital
       container << number_to_percentage(report.return_on_capital * 100, precision: 3)
     when :earnings_yield

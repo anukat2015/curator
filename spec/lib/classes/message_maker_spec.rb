@@ -15,9 +15,9 @@ RSpec.describe MessageMaker do
     end
 
     it 'works with magic_number as a parameter' do
-      params = { :sort_by => "magic_number", :limit => 10 }
+      params = { :sort_by => "magic_rank", :limit => 10 }
       msg = MessageMaker.new(params).make_message
-      expect(msg).to eq("Sorting by Magic Number\nLimit: 10")
+      expect(msg).to eq("Sorting by Magic Rank\nLimit: 10")
     end
 
     it 'interprets 2000 as a limit of none' do

@@ -7,8 +7,8 @@ class MessageMaker
       message_obj << "Return on Capital"
     elsif sort_by == "earnings_yield"
       message_obj << "Earnings Yield"
-    elsif sort_by == "magic_number"
-      message_obj << "Magic Number"
+    elsif sort_by == "magic_rank"
+      message_obj << "Magic Rank"
     else
       message_obj << "nothing"
     end
