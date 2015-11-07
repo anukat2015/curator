@@ -1,6 +1,6 @@
 !!!
 %h1 Curator
-%p= "Data current as of #{@last_updated}"
+%p= "Data current as of #{@last_updated.strftime("%B #{@last_updated.day.ordinalize}, %Y")}"
 %div
   %form{id: "sort_limit_form", action: "/", method: "GET"}
     Sort by:
