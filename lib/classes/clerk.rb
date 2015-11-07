@@ -64,6 +64,8 @@ class Clerk
       container << number_to_currency(report.total_debt,                precision: 0)
     when :cash_and_equivalents
       container << number_to_currency(report.cash_and_equivalents,      precision: 0)
+    else
+      container << report.send(attribute)
     end
   end
 end

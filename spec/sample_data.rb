@@ -119,24 +119,24 @@ def sample_company_data_array
     },
     {
       :symbol => "TSRA",
-      :ebit => 37939000.0,
-      :ebit_date => "2015-06-30",
-      :market_cap => 1910102997.48,
-      :market_cap_date => "2015-08-05",
-      :cash_and_equivalents => 21412000.0,
-      :cash_and_equivalents_date => "2015-06-30",
+      :ebit => 40095000.0,
+      :ebit_date => "2015-09-30",
+      :market_cap => 1836236169.74,
+      :market_cap_date => "2015-11-03",
+      :cash_and_equivalents => 32028000.0,
+      :cash_and_equivalents_date => "2015-09-30",
       :total_debt => 0.0,
-      :total_debt_date => "2015-06-30",
-      :enterprise_value => 1888690997.48,
-      :earnings_yield => 0.020087,
-      :total_assets => 565878000.0,
-      :total_assets_date => "2015-06-30",
-      :current_assets => 479667000.0,
-      :current_assets_date => "2015-06-30",
-      :working_capital => 455396000.0,
-      :working_capital_date => "2015-06-30",
-      :fixed_assets => 86211000.0,
-      :return_on_capital => 0.070049
+      :total_debt_date => "2015-09-30",
+      :enterprise_value => 1804208169.74,
+      :earnings_yield => 0.022223,
+      :total_assets => 550923000.0,
+      :total_assets_date => "2015-09-30",
+      :current_assets => 431304000.0,
+      :current_assets_date => "2015-09-30",
+      :working_capital => 409237000.0,
+      :working_capital_date => "2015-09-30",
+      :fixed_assets => 119619000.0,
+      :return_on_capital => 0.075815
     },
     {
       :symbol => "TTEK",
@@ -182,24 +182,24 @@ def sample_company_data_array
     },
     {
       :symbol => "TTPH",
-      :ebit => -26043000.0,
-      :ebit_date => "2015-06-30",
-      :market_cap => 1524207215.7,
-      :market_cap_date => "2015-08-06",
-      :cash_and_equivalents => 242278000.0,
-      :cash_and_equivalents_date => "2015-06-30",
+      :ebit => -18044000.0,
+      :ebit_date => "2015-09-30",
+      :market_cap => 364327189.62,
+      :market_cap_date => "2015-11-02",
+      :cash_and_equivalents => 222658000.0,
+      :cash_and_equivalents_date => "2015-09-30",
       :total_debt => 0.0,
-      :total_debt_date => "2015-06-30",
-      :enterprise_value => 1281929215.7,
-      :earnings_yield => -0.020315,
-      :total_assets => 249610000.0,
-      :total_assets_date => "2015-06-30",
-      :current_assets => 248413000.0,
-      :current_assets_date => "2015-06-30",
-      :working_capital => 232731000.0,
-      :working_capital_date => "2015-06-30",
-      :fixed_assets => 1197000.0,
-      :return_on_capital => -0.111329
+      :total_debt_date => "2015-09-30",
+      :enterprise_value => 141669189.62,
+      :earnings_yield => -0.127367,
+      :total_assets => 229195000.0,
+      :total_assets_date => "2015-09-30",
+      :current_assets => 228089000.0,
+      :current_assets_date => "2015-09-30",
+      :working_capital => 217449000.0,
+      :working_capital_date => "2015-09-30",
+      :fixed_assets => 1106000.0,
+      :return_on_capital => -0.08256
     }
   ]
 end
@@ -207,16 +207,16 @@ end
 def earnings_yield_data_1
   {
                      :symbol => "AAPL",
-                 :total_debt => 54418000000.0,
-            :total_debt_date => "2015-06-27",
-                 :market_cap => 714094854543.0,
-            :market_cap_date => "2015-07-22",
-       :cash_and_equivalents => 15319000000.0,
-  :cash_and_equivalents_date => "2015-06-27",
-                       :ebit => 14473000000.0,
-                  :ebit_date => "2015-06-27",
-           :enterprise_value => 753193854543.0,
-             :earnings_yield => 0.019216
+                 :total_debt => 64462000000.0,
+            :total_debt_date => "2015-09-26",
+                 :market_cap => 638654182776.0,
+            :market_cap_date => "2015-10-28",
+       :cash_and_equivalents => 21120000000.0,
+  :cash_and_equivalents_date => "2015-09-26",
+                       :ebit => 15062000000.0,
+                  :ebit_date => "2015-09-26",
+           :enterprise_value => 681996182776.0,
+             :earnings_yield => 0.022085
   }
 end
 
@@ -239,16 +239,16 @@ end
 def return_on_capital_data_1
   {
                 :symbol => "AAPL",
-                  :ebit => 14473000000.0,
-             :ebit_date => "2015-06-27",
-          :total_assets => 273151000000.0,
-     :total_assets_date => "2015-06-27",
-        :current_assets => 70953000000.0,
-   :current_assets_date => "2015-06-27",
-       :working_capital => 5668000000.0,
-  :working_capital_date => "2015-06-27",
-          :fixed_assets => 202198000000.0,
-     :return_on_capital => 0.069627
+                  :ebit => 15062000000.0,
+             :ebit_date => "2015-09-26",
+          :total_assets => 290479000000.0,
+     :total_assets_date => "2015-09-26",
+        :current_assets => 89378000000.0,
+   :current_assets_date => "2015-09-26",
+       :working_capital => 8768000000.0,
+  :working_capital_date => "2015-09-26",
+          :fixed_assets => 201101000000.0,
+     :return_on_capital => 0.071769
   }
 end
 

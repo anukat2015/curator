@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
       @download_link = "<a href='/download'>Download CSV</a>"
       session[:report_params] = report_params
     end
-    @last_updated = Report.maximum("updated_at").to_date.to_s
+    @last_updated = Report.maximum(:created_at).to_date.to_s
   end
 
   def download_csv
@@ -29,21 +29,28 @@ class WelcomeController < ApplicationController
   end
 
   def generate_csv
-    attrs = [
-      :symbol,
-      :name,
-      :return_on_capital,
-      :earnings_yield,
-      :enterprise_value,
-      :ebit,
-      :market_cap,
-      :working_capital,
-      :fixed_assets,
-      :total_assets,
-      :current_assets,
-      :total_debt,
-      :cash_and_equivalents
-    ]
+    attrs = %i(
+      symbol
+      name
+      return_on_capital
+      earnings_yield
+      enterprise_value
+      ebit
+      ebit_date
+      market_cap
+      market_cap_date
+      working_capital
+      working_capital_date
+      fixed_assets
+      total_assets
+      total_assets_date
+      current_assets
+      current_assets_date
+      total_debt
+      total_debt_date
+      cash_and_equivalents
+      cash_and_equivalents_date
+    )
 
     Clerk.new(
       params: saved_params,

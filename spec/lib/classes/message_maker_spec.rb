@@ -14,6 +14,11 @@ RSpec.describe MessageMaker do
       expect(msg).to eq("Sorting by Earnings Yield\nLimit: 100")
     end
 
+    it 'works with magic_number as a parameter' do
+      params = { :sort_by => "magic_number", :limit => 10 }
+      msg = MessageMaker.new(params).make_message
+      expect(msg).to eq("Sorting by Magic Number\nLimit: 10")
+    end
 
     it 'interprets 2000 as a limit of none' do
       params = { :sort_by => "return_on_capital", :limit => "3000" }

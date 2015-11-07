@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe Accountant do
   describe '#calculate_ey_and_roc' do
     it 'calculates correctly' do
-      ey_hash =
-      {
+      ey_hash = {
          :symbol => "AAPL",
          :ebit => 10484000000.0,
          :ebit_date => "2014-06-28",
@@ -15,8 +14,8 @@ RSpec.describe Accountant do
          :total_debt => 31040000000.0,
          :total_debt_date => "2014-06-28"
       }
-      roc_hash =
-      {
+
+      roc_hash = {
          :symbol => "AAPL",
          :ebit => 10484000000.0,
          :ebit_date => "2014-06-28",
@@ -30,6 +29,7 @@ RSpec.describe Accountant do
 
       completed_ey_hash = Accountant.new(data: ey_hash).calculate_ey_and_roc
       completed_roc_hash = Accountant.new(data: roc_hash).calculate_ey_and_roc
+
       ev = (ey_hash[:market_cap] + ey_hash[:total_debt]) - ey_hash[:cash_and_equivalents]
       ey = (ey_hash[:ebit] / ev).round(6)
       net_fixed_assets = roc_hash[:total_assets] - roc_hash[:current_assets]

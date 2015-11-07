@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'sample_data'
 
-RSpec.describe Clerk do
+describe Clerk do
   describe '#create_csv' do
     before(:all) do
       Report.delete_all

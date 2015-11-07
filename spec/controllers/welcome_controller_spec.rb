@@ -21,7 +21,6 @@ RSpec.describe WelcomeController, :type => :controller do
     end
 
     it 'returns no reports if report_params is blank' do
-      report_params = {}
       get :index
       expect(assigns(:reports)).to be nil
     end
