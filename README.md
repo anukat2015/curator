@@ -10,7 +10,7 @@ The application retrieves and calculates financial data on 3,000 publicly traded
 
 **curator** is designed to provide a list of companies that can be ranked by earnings yield and return on capital. Investment decisions should not be made without further analysis, however initial results have been promising (the top ranked companies by return on capital from Q2 2014 show an average return of over 35% since late June 2014.)
 
-**curator** is no longer a command-line application, but if you'd like to use it that way, check out the v0.1 release above. There is now a web interface found at the link at the top of this repo page. Data is usually refreshed from the API once a week.
+**curator** is no longer a command-line application, but if you'd like to use it that way, check out the v0.1 release above. There is now a web interface found at the link at the top of this repo page. Data is refreshed from the API daily.
 
 ## Contributing
 
