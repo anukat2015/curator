@@ -1,7 +1,7 @@
 class DataValidator
   def data_present?
     response = HTTParty.get(test_url)
-    ErrorChecker.new(response: response, ticker: ticker, timeout: 60).check_for_errors
+    ErrorChecker.new(response: response, ticker: ticker, timeout: 600).check_for_errors
     response.size > 1
   end
 
