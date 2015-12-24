@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
       @download_link = "<a href='/download'>Download CSV</a>"
       session[:report_params] = report_params
     end
-    @last_updated = Report.maximum(:created_at).to_date
+    @last_updated = Report.maximum(:updated_at).to_date
   end
 
   def download_csv
