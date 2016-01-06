@@ -66,6 +66,7 @@ GEM
     ffi (1.9.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    google-analytics-rails (0.0.6)
     haml (4.0.7)
       tilt
     hike (1.2.3)
@@ -217,6 +218,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  google-analytics-rails
   haml
   httparty
   irbtools
